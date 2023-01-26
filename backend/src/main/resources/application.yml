@@ -1,0 +1,22 @@
+spring:
+  profiles:
+    include: oauth
+  datasource:
+    # MySQL 설정
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # DB Source URL
+    url: jdbc:mysql://yt4307.iptime.org:3306/Nosily_coach?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
+    # DB username
+    username: icefe
+    # DB password
+    password: icefe0706
+  jpa:
+    # true 설정시 JPA 쿼리문 확인 가능
+    show-sql: 'true'
+    properties:
+      hibernate:
+        # SQL의 가독성을 높여줍니다.
+        format_sql: 'true'
+    hibernate:
+      # JPA를 기반으로 자동으로 테이블을 생성해줍니다
+      ddl-auto: update
