@@ -21,7 +21,7 @@
 
 - 인공지능
   - 언어: Python 3.10
-  - 프레임워크: TensorFlow 2.10.0, Pandas, NumPy
+  - 프레임워크: TensorFlow 2.10.0, Pandas 1.5.3
 - 백엔드
   - 언어: Java 17
   - 프레임워크: Spring Boot 3.0.2
