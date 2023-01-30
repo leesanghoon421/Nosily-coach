@@ -1,4 +1,4 @@
-package com.inti.nosily_coach.domain;
+package com.inti.nosily_coach.domain.Member.model;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;

@@ -1,4 +1,4 @@
-package com.inti.nosily_coach.domain;
+package com.inti.nosily_coach.auth.model;
 
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;

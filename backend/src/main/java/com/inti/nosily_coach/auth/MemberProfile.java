@@ -1,6 +1,6 @@
 package com.inti.nosily_coach.auth;
 
-import com.inti.nosily_coach.domain.Member;
+import com.inti.nosily_coach.domain.Member.model.Member;
 import lombok.Getter;
 import lombok.Setter;
 
