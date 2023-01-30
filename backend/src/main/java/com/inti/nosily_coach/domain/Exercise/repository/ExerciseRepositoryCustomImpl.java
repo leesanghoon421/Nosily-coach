@@ -1,5 +1,7 @@
 package com.inti.nosily_coach.domain.Exercise.repository;
 
-public class ExerciseRepositoryCustomImpl implements ExerciseRepositoryCustom {
+import com.querydsl.jpa.impl.JPAQueryFactory;
 
+public class ExerciseRepositoryCustomImpl implements ExerciseRepositoryCustom {
+    JPAQueryFactory queryFactory;
 }
