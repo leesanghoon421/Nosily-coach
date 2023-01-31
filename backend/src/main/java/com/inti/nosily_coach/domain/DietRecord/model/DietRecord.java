@@ -20,7 +20,7 @@ public class DietRecord extends BaseEntity {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @OneToMany(mappedBy = "diet_record", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "dietRecord", cascade = CascadeType.ALL)
     private List<Eat> eats = new ArrayList<>();
 
     @Column(nullable = false)

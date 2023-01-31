@@ -21,7 +21,7 @@ public class ExerciseRecord extends BaseEntity {
     @JoinColumn(name = "member_id")
     private Member member; // 회원 table과 매핑
 
-    @OneToMany(mappedBy = "exercise_record", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "exerciseRecord", cascade = CascadeType.ALL)
     private List<SelectedExercise> selectedExercises = new ArrayList<>();
 
     @Column(length = 300)
