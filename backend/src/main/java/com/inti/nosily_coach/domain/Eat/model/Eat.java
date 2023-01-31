@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Eat extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "record_id")
+    @JoinColumn(name = "dietRecord_id")
     private DietRecord dietRecord;
 
     @ManyToOne(fetch = FetchType.LAZY)

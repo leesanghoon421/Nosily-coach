@@ -17,7 +17,7 @@ import java.util.Timer;
 @NoArgsConstructor
 public class SelectedExercise extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "record_id")
+    @JoinColumn(name = "exerciseRecord_id")
     private ExerciseRecord exerciseRecord;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -1,5 +1,6 @@
 package com.inti.nosily_coach.domain.Exercise.model;
 
+import com.inti.nosily_coach.domain.SelectedExercise.model.SelectedExercise;
 import com.inti.nosily_coach.domain.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -9,6 +10,8 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -34,4 +37,7 @@ public class Exercise extends BaseEntity {
 
     @Column(nullable = false)
     private String recSet; // set 추천 횟수
+
+    @OneToMany(mappedBy = "exercise", cascade = CascadeType.ALL)
+    private List<SelectedExercise> selectedExercises = new ArrayList<>();
 }
