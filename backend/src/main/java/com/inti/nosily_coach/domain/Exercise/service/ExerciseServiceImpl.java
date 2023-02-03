@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.awt.print.Pageable;
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,7 +19,7 @@ public class ExerciseServiceImpl implements ExerciseService  {
     @Override
     @Transactional(readOnly = true)
     public List<GetExerciseResponse> getAllExercises (Pageable pageable) {
-        return exerciseRepository.findAll(pageable).stream()
+        return exerciseRepository.findAllWithPaging(pageable).stream()
                 .map(exercise -> GetExerciseResponse.of(exercise.getName(), exercise.getType(),
                         exercise.getPosition(), exercise.getDescription(), exercise.getUrl(),
                         exercise.getRecCount(), exercise.getRecSet())).collect(Collectors.toList());
