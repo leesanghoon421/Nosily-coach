@@ -20,13 +20,13 @@
 ---
 
 - 인공지능
-  - 언어: Python 3.10
-  - 프레임워크: TensorFlow 2.10.0, Pandas 1.5.3
+  - 언어: Python 3.9.16
+  - 프레임워크: TensorFlow 2.11.0, Pandas 1.4.4
 - 백엔드
   - 언어: Java 17
   - 프레임워크: Spring Boot 3.0.2
 - 프론트엔드
-  - 언어: TypeScript 4.9.4
+  - 언어: JavaScript ES6
   - 프레임워크: React 18.2.0
 
 ### 꼬치코치 기능 설명
