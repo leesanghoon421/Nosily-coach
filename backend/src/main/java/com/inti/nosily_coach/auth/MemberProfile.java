@@ -11,6 +11,8 @@ public class MemberProfile {
     private String email;
     private String provider;
     private String nickname;
+    private String sex;
+    private String age;
 
     public Member toMember() {
         return Member.builder()
