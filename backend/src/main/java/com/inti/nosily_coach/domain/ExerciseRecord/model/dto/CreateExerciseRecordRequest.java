@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class CreateExerciseRecordRequest {
     private String memo;
 
-    public ExerciseRecord toEntity(Member member) {
+    public ExerciseRecord toEntity(Member member, String memo) {
         return ExerciseRecord.newExerciseRecord(member, memo);
     }
 }
