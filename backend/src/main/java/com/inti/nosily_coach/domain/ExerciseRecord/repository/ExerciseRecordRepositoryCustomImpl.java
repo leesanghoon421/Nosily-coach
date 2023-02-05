@@ -5,8 +5,10 @@ import com.querydsl.core.types.Ops;
 import com.querydsl.core.types.dsl.NumberOperation;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import static com.inti.nosily_coach.domain.ExerciseRecord.model.QExerciseRecord.exerciseRecord;
 import static com.querydsl.core.types.dsl.Expressions.numberOperation;
@@ -43,5 +45,18 @@ public class ExerciseRecordRepositoryCustomImpl implements ExerciseRecordReposit
                         toMonth.eq(date.getMonthValue()),
                         toDay.eq(date.getDayOfMonth())
                 ).fetchOne();
+    }
+
+    // # 운동기록 전체 조회
+    @Override
+    public List<ExerciseRecord> findAllWithPaging(Long memberId, Pageable pageable) {
+        return queryFactory.selectFrom(exerciseRecord)
+                .where(
+                        // memberId에 해당되는 record인지 확인
+                        exerciseRecord.member.id.eq(memberId)
+                ).orderBy(exerciseRecord.createdAt.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
     }
 }
