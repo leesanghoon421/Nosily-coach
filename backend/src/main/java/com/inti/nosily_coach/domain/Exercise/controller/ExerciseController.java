@@ -20,7 +20,7 @@ public class ExerciseController {
     // # 운동법 전체 조회
     @GetMapping("/api/exercises")
     @ResponseBody
-    public ApiResponse<List<GetExerciseResponse>> getAllExercises(@PageableDefault Pageable pageable) {
+    public ApiResponse<List<GetExerciseResponse>> getAllExercises(@PageableDefault(size = 5) Pageable pageable) {
         List<GetExerciseResponse> getExerciseResponses = exerciseService.getAllExercises(pageable);
         return ApiResponse.success(getExerciseResponses);
     }
