@@ -2,11 +2,16 @@ package com.inti.nosily_coach.domain.ExerciseRecord.controller;
 
 import com.inti.nosily_coach.domain.ExerciseRecord.model.dto.CreateExerciseRecordRequest;
 import com.inti.nosily_coach.domain.ExerciseRecord.model.dto.CreateExerciseRecordResponse;
+import com.inti.nosily_coach.domain.ExerciseRecord.model.dto.GetExerciseRecordResponse;
 import com.inti.nosily_coach.domain.ExerciseRecord.model.dto.UpdateExerciseRecordResponse;
 import com.inti.nosily_coach.domain.ExerciseRecord.service.ExerciseRecordService;
 import com.inti.nosily_coach.domain.common.ApiResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -32,11 +37,13 @@ public class ExerciseRecordController {
     }
 
     // # 운동 기록 전체 조회
-    /*
     @GetMapping("/api/exerciseRecords")
-    public ApiResponse<GetExerciseRecordResponse> getAllExerciseRecords(
+    public ApiResponse<List<GetExerciseRecordResponse>> getAllExerciseRecords(
             Long memberId, @PageableDefault Pageable pageable) {
-        GetExerciseRecordResponse response = exerciseRecordService
-    }*/
+        List<GetExerciseRecordResponse> response = exerciseRecordService.getAllExerciseRecords(memberId, pageable);
+
+        return ApiResponse.success(response);
+    }
+
     // # 운동 기록 날짜별 조회
 }
