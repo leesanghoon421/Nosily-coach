@@ -16,7 +16,7 @@ public class ExerciseRecordController {
     // # 운동 기록 작성
     @PostMapping("/api/exerciseRecords")
     public ApiResponse<CreateExerciseRecordResponse> createExerciseRecord(
-            Long memberId, @RequestPart CreateExerciseRecordRequest createExerciseRecordRequest) {
+            Long memberId, @RequestBody CreateExerciseRecordRequest createExerciseRecordRequest) {
         CreateExerciseRecordResponse response = exerciseRecordService.createExerciseRecord(memberId, createExerciseRecordRequest);
 
         return ApiResponse.success(response);
@@ -25,12 +25,18 @@ public class ExerciseRecordController {
     // # 운동 기록 수정
     @PatchMapping("/api/exerciseRecords/{recordId}")
     public ApiResponse<UpdateExerciseRecordResponse> updateExerciseRecord(
-            Long memberId, @PathVariable("recordId") Long recordId, String memo) {
+            Long memberId, @PathVariable("recordId") Long recordId, @RequestBody String memo) {
         UpdateExerciseRecordResponse response = exerciseRecordService.updateExerciseRecord(memberId, recordId, memo);
 
         return ApiResponse.success(response);
     }
 
     // # 운동 기록 전체 조회
+    /*
+    @GetMapping("/api/exerciseRecords")
+    public ApiResponse<GetExerciseRecordResponse> getAllExerciseRecords(
+            Long memberId, @PageableDefault Pageable pageable) {
+        GetExerciseRecordResponse response = exerciseRecordService
+    }*/
     // # 운동 기록 날짜별 조회
 }
