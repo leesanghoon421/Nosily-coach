@@ -10,7 +10,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalTime;
-import java.util.Timer;
 
 @Entity
 @Getter
@@ -24,31 +23,31 @@ public class SelectedExercise extends BaseEntity {
     @JoinColumn(name = "exercise_id")
     private Exercise exercise;
 
-    @Column
-    private LocalTime time; // 운동시간
+    @Column(nullable = false)
+    private LocalTime times; // 운동시간
 
-    @Column
-    private Long count; // 1회 횟수
+    @Column(nullable = false)
+    private int counts; // 1회 횟수
 
-    @Column
-    private Long set; // set 횟수
+    @Column(nullable = false)
+    private int setCnt; // set 횟수
 
     @Builder(access = AccessLevel.PRIVATE)
-    private SelectedExercise(ExerciseRecord exerciseRecord, Exercise exercise, LocalTime time, Long count, Long set) {
+    private SelectedExercise(ExerciseRecord exerciseRecord, Exercise exercise, LocalTime times, int counts, int setCnt) {
         this.exerciseRecord = exerciseRecord;
         this.exercise = exercise;
-        this.time = time;
-        this.count = count;
-        this.set = set;
+        this.times = times;
+        this.counts = counts;
+        this.setCnt = setCnt;
     }
 
-    public static SelectedExercise newSelectedExercise(ExerciseRecord exerciseRecord, Exercise exercise, LocalTime time, Long count, Long set) {
+    public static SelectedExercise newSelectedExercise(ExerciseRecord exerciseRecord, Exercise exercise, LocalTime times, int counts, int setCnt) {
         return SelectedExercise.builder()
                 .exerciseRecord(exerciseRecord)
                 .exercise(exercise)
-                .time(time)
-                .count(count)
-                .set(set)
+                .times(times)
+                .counts(counts)
+                .setCnt(setCnt)
                 .build();
     }
 }
