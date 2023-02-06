@@ -6,6 +6,7 @@ import com.inti.nosily_coach.domain.ExerciseRecord.model.ExerciseRecord;
 import com.inti.nosily_coach.domain.ExerciseRecord.repository.ExerciseRecordRepository;
 import com.inti.nosily_coach.domain.SelectedExercise.model.SelectedExercise;
 import com.inti.nosily_coach.domain.SelectedExercise.model.dto.CreateSelectedExerciseRequest;
+import com.inti.nosily_coach.domain.SelectedExercise.model.dto.DeleteSelectedExerciseRequest;
 import com.inti.nosily_coach.domain.SelectedExercise.model.dto.GetSelectedExerciseResponse;
 import com.inti.nosily_coach.domain.SelectedExercise.repository.SelectedExerciseRepository;
 import lombok.RequiredArgsConstructor;
@@ -44,7 +45,8 @@ public class SelectedExerciseServiceImpl implements SelectedExerciseService{
     // 매핑 삭제
     @Override
     @Transactional
-    public void deleteSelectedExercise(SelectedExercise selectedExercise) {
+    public void deleteSelectedExercise(Long memberId, DeleteSelectedExerciseRequest request) {
+        SelectedExercise selectedExercise = selectedExerciseRepository.findByRecordAndExercise(memberId, request.getExerciseId(), request.getRecordId());
         selectedExerciseRepository.delete(selectedExercise);
     }
 
@@ -53,7 +55,7 @@ public class SelectedExerciseServiceImpl implements SelectedExerciseService{
     @Transactional
     public List<GetSelectedExerciseResponse> getSelectedExercise(List<SelectedExercise> selectedExercises) {
         return selectedExercises.stream().map(
-                exercise -> GetSelectedExerciseResponse.of(exercise.getExercise().getName(),
+                exercise -> GetSelectedExerciseResponse.of(exercise.getExercise().getId(), exercise.getExercise().getName(),
                         exercise.getCounts(), exercise.getSetCnt())).collect(Collectors.toList());
     }
 }
