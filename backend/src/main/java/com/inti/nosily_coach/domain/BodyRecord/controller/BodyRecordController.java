@@ -37,7 +37,7 @@ public class BodyRecordController {
         return ApiResponse.success(getBodyRecordsResponse);
     }
 
-    // # 몸기록 일주일치 몸무게 보내기
+    // # 몸기록 최근 7가지 몸무게 보내기
 
     // # 몸기록 수정
     @PatchMapping("/api/bodyRecords/{recordId}")
@@ -45,4 +45,11 @@ public class BodyRecordController {
                                                                   @RequestBody UpdateBodyRecordRequest request) {
         return ApiResponse.success(bodyRecordService.updateBodyRecord(memberId, recordId, request));
     }
+
+    // # 몸기록 삭제
+    @DeleteMapping("/api/bodyRecords/{recordId}")
+    public ApiResponse<DeleteBodyRecordResponse> deleteBodyRecord(Long memberId, @PathVariable(name = "recordId") Long recordId) {
+        return ApiResponse.success(bodyRecordService.deleteBodyRecord(memberId, recordId));
+    }
+
 }
