@@ -57,4 +57,14 @@ public class BodyRecordRepositoryCustomImpl implements BodyRecordRepositoryCusto
                         toDay.eq(localDate.getDayOfMonth())
                 ).fetchOne();
     }
+
+    // # 단일 조회
+    @Override
+    public BodyRecord findByRecordId (Long memberId, Long recordId) {
+        return jpaQueryFactory.selectFrom(bodyRecord)
+                .where(
+                        bodyRecord.member.id.eq(memberId),
+                        bodyRecord.id.eq(recordId)
+                ).fetchOne();
+    }
 }
