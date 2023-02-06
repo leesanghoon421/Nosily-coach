@@ -4,11 +4,10 @@ import com.inti.nosily_coach.domain.ExerciseRecord.model.dto.CreateExerciseRecor
 import com.inti.nosily_coach.domain.ExerciseRecord.repository.ExerciseRecordRepository;
 import com.inti.nosily_coach.domain.ExerciseRecord.service.ExerciseRecordService;
 import com.inti.nosily_coach.domain.SelectedExercise.model.dto.CreateSelectedExerciseRequest;
+import com.inti.nosily_coach.domain.SelectedExercise.model.dto.DeleteSelectedExerciseRequest;
 import com.inti.nosily_coach.domain.SelectedExercise.service.SelectedExerciseService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 
@@ -29,4 +28,12 @@ public class SelectedExerciseController {
         }
         selectedExerciseService.createSelectedExercise(memberId, exerciseId, localDate, request);
     }
+
+    // # 선택한 운동 삭제
+    @DeleteMapping("/api/selectedExercises")
+    public void deleteSelectedExercise(Long memberId, @RequestBody DeleteSelectedExerciseRequest request) {
+        selectedExerciseService.deleteSelectedExercise(memberId, request);
+    }
+
+    // # 선택한 운동 수정
 }
