@@ -2,9 +2,7 @@ package com.inti.nosily_coach.domain.BodyRecord.service;
 
 import com.inti.nosily_coach.auth.repository.MemberRepository;
 import com.inti.nosily_coach.domain.BodyRecord.model.BodyRecord;
-import com.inti.nosily_coach.domain.BodyRecord.model.dto.CreateBodyRecordRequest;
-import com.inti.nosily_coach.domain.BodyRecord.model.dto.CreateBodyRecordResponse;
-import com.inti.nosily_coach.domain.BodyRecord.model.dto.GetBodyRecordsResponse;
+import com.inti.nosily_coach.domain.BodyRecord.model.dto.*;
 import com.inti.nosily_coach.domain.BodyRecord.repository.BodyRecordRepository;
 import com.inti.nosily_coach.domain.Member.model.Member;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -56,5 +55,15 @@ public class BodyRecordServiceImpl implements BodyRecordService {
                 request.getWeight(), request.getBodyFatPercentage(), request.getMuscle()));
 
         return CreateBodyRecordResponse.of(bodyRecord.getId());
+    }
+
+    // # 몸기록 수정
+    @Override
+    @Transactional
+    public UpdateBodyRecordResponse updateBodyRecord(Long memberId, @RequestParam Long recordId, @RequestBody UpdateBodyRecordRequest request) {
+        BodyRecord bodyRecord = bodyRecordRepository.findByRecordId(memberId, recordId);
+        bodyRecord.update(request.getHeight(), request.getWeight(), request.getBodyFatPercentage(), request.getMuscle());
+
+        return UpdateBodyRecordResponse.of(bodyRecord.getId());
     }
 }
