@@ -1,8 +1,6 @@
 package com.inti.nosily_coach.domain.BodyRecord.controller;
 
-import com.inti.nosily_coach.domain.BodyRecord.model.dto.CreateBodyRecordRequest;
-import com.inti.nosily_coach.domain.BodyRecord.model.dto.CreateBodyRecordResponse;
-import com.inti.nosily_coach.domain.BodyRecord.model.dto.GetBodyRecordsResponse;
+import com.inti.nosily_coach.domain.BodyRecord.model.dto.*;
 import com.inti.nosily_coach.domain.BodyRecord.service.BodyRecordService;
 import com.inti.nosily_coach.domain.common.ApiResponse;
 import lombok.RequiredArgsConstructor;
@@ -42,4 +40,9 @@ public class BodyRecordController {
     // # 몸기록 일주일치 몸무게 보내기
 
     // # 몸기록 수정
+    @PatchMapping("/api/bodyRecords/{recordId}")
+    public ApiResponse<UpdateBodyRecordResponse> updateBodyRecord(Long memberId, @PathVariable(name = "recordId") Long recordId,
+                                                                  @RequestBody UpdateBodyRecordRequest request) {
+        return ApiResponse.success(bodyRecordService.updateBodyRecord(memberId, recordId, request));
+    }
 }
