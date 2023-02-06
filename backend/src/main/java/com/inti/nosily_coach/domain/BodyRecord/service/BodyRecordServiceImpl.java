@@ -46,7 +46,7 @@ public class BodyRecordServiceImpl implements BodyRecordService {
     // # 몸기록 작성
     @Override
     @Transactional
-    public CreateBodyRecordResponse createBodyRecord(Long memberId, @RequestBody CreateBodyRecordRequest request) {
+    public CreateBodyRecordResponse createBodyRecord(Long memberId, CreateBodyRecordRequest request) {
         Member member = memberRepository.findById(memberId).orElseThrow(() -> new RuntimeException("존재하지 않은 회원입니다."));
         if (bodyRecordRepository.recordNumOfDate(memberId, LocalDate.now()) > 0) {
             throw new RuntimeException("이미 오늘 작성된 몸기록이 있습니다.");
@@ -60,10 +60,21 @@ public class BodyRecordServiceImpl implements BodyRecordService {
     // # 몸기록 수정
     @Override
     @Transactional
-    public UpdateBodyRecordResponse updateBodyRecord(Long memberId, @RequestParam Long recordId, @RequestBody UpdateBodyRecordRequest request) {
+    public UpdateBodyRecordResponse updateBodyRecord(Long memberId, Long recordId, UpdateBodyRecordRequest request) {
         BodyRecord bodyRecord = bodyRecordRepository.findByRecordId(memberId, recordId);
         bodyRecord.update(request.getHeight(), request.getWeight(), request.getBodyFatPercentage(), request.getMuscle());
 
         return UpdateBodyRecordResponse.of(bodyRecord.getId());
+    }
+
+    // # 몸기록 삭제
+    @Override
+    @Transactional
+    public DeleteBodyRecordResponse deleteBodyRecord(Long memberId, Long recordId) {
+        BodyRecord bodyRecord = bodyRecordRepository.findByRecordId(memberId, recordId);
+        DeleteBodyRecordResponse deleteBodyRecordResponse = DeleteBodyRecordResponse.of(bodyRecord.getId());
+
+        bodyRecordRepository.delete(bodyRecord);
+        return deleteBodyRecordResponse;
     }
 }
