@@ -9,4 +9,5 @@ import java.util.List;
 public interface BodyRecordRepositoryCustom {
     List<BodyRecord> findAllByMemberId(Long memberId, Pageable pageable);
     BodyRecord findByDate(Long memberId, LocalDate localDate);
+    Long recordNumOfDate(Long memberId, LocalDate localDate);
 }

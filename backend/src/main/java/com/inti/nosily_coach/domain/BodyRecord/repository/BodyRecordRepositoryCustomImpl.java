@@ -42,4 +42,19 @@ public class BodyRecordRepositoryCustomImpl implements BodyRecordRepositoryCusto
                         toDay.eq(localDate.getDayOfMonth())
                 ).fetchOne();
     }
+
+    // # 기록된 몸 기록이 있는지
+    @Override
+    public Long recordNumOfDate(Long memberId, LocalDate localDate) {
+        NumberOperation<Integer> toYear = numberOperation(Integer.class, Ops.DateTimeOps.YEAR, bodyRecord.createdAt);
+        NumberOperation<Integer> toMonth = numberOperation(Integer.class, Ops.DateTimeOps.MONTH, bodyRecord.createdAt);
+        NumberOperation<Integer> toDay = numberOperation(Integer.class, Ops.DateTimeOps.DAY_OF_MONTH, bodyRecord.createdAt);
+        return jpaQueryFactory.select(bodyRecord.count()).from(bodyRecord)
+                .where(
+                        bodyRecord.member.id.eq(memberId),
+                        toYear.eq(localDate.getYear()),
+                        toMonth.eq(localDate.getMonthValue()),
+                        toDay.eq(localDate.getDayOfMonth())
+                ).fetchOne();
+    }
 }
