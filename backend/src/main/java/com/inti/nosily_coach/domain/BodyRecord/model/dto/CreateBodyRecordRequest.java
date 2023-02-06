@@ -16,8 +16,7 @@ public class CreateBodyRecordRequest {
 
     private Float muscle;
 
-    @Builder(access = AccessLevel.PRIVATE)
-    private BodyRecord toEntity(Member member, Float height, Float weight, Float bodyFatPercentage, Float muscle) {
+    public BodyRecord toEntity(Member member, Float height, Float weight, Float bodyFatPercentage, Float muscle) {
         return BodyRecord.newBodyRecord(member, height, weight, bodyFatPercentage, muscle);
     }
 }
