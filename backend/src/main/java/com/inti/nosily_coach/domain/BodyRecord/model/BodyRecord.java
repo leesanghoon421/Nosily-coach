@@ -46,4 +46,11 @@ public class BodyRecord extends BaseEntity {
                 .muscle(muscle)
                 .build();
     }
+
+    public void update(Float height, Float weight, Float bodyFatPercentage, Float muscle) {
+        this.height = height;
+        this.weight = weight;
+        this.bodyFatPercentage = bodyFatPercentage;
+        this.muscle = muscle;
+    }
 }
