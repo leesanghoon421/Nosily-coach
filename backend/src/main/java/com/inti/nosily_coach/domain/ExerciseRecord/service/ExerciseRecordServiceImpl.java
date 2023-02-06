@@ -8,6 +8,7 @@ import com.inti.nosily_coach.domain.ExerciseRecord.model.dto.GetExerciseRecordRe
 import com.inti.nosily_coach.domain.ExerciseRecord.model.dto.UpdateExerciseRecordResponse;
 import com.inti.nosily_coach.domain.ExerciseRecord.repository.ExerciseRecordRepository;
 import com.inti.nosily_coach.domain.Member.model.Member;
+import com.inti.nosily_coach.domain.SelectedExercise.service.SelectedExerciseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,7 @@ import java.util.stream.Collectors;
 public class ExerciseRecordServiceImpl implements ExerciseRecordService {
     private final ExerciseRecordRepository exerciseRecordRepository;
     private final MemberRepository memberRepository;
+    private final SelectedExerciseService selectedExerciseService;
 
     // # 운동기록 작성
     @Override
@@ -52,8 +54,19 @@ public class ExerciseRecordServiceImpl implements ExerciseRecordService {
     @Transactional(readOnly = true)
     public List<GetExerciseRecordResponse> getAllExerciseRecords(Long memberId, Pageable pageable) {
         return exerciseRecordRepository.findAllWithPaging(memberId, pageable)
-                .stream().map(record -> GetExerciseRecordResponse.of(record.getId(), record.getSelectedExercises(),
+                .stream().map(record -> GetExerciseRecordResponse.of(record.getId(),
+                        selectedExerciseService.getSelectedExercise(record.getSelectedExercises()),
                         record.getMemo(), record.getCreatedAt().format(DateTimeFormatter.ofPattern("MM월 dd일 E요일")))
                 ).collect(Collectors.toList());
+    }
+
+    // # 운동기록 날짜별 조회 (단일 조회)
+    @Override
+    @Transactional(readOnly = true)
+    public GetExerciseRecordResponse getExerciseRecordByDate(Long memberId, LocalDate localDate) {
+        ExerciseRecord exerciseRecord = exerciseRecordRepository.findByDate(memberId, localDate);
+        return GetExerciseRecordResponse.of(exerciseRecord.getId(),
+                selectedExerciseService.getSelectedExercise(exerciseRecord.getSelectedExercises()),
+                exerciseRecord.getMemo(), exerciseRecord.getCreatedAt().format(DateTimeFormatter.ofPattern("MM월 dd일 E요일")));
     }
 }
