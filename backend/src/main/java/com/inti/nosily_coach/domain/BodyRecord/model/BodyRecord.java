@@ -19,21 +19,31 @@ public class BodyRecord extends BaseEntity {
     @Column(nullable = true)
     private Float height;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private Float weight;
 
+    @Column(nullable = true)
+    private Float bodyFatPercentage;
+
+    @Column(nullable = true)
+    private Float muscle;
+
     @Builder(access = AccessLevel.PRIVATE)
-    private BodyRecord(Member member, Float height, Float weight) {
+    private BodyRecord(Member member, Float height, Float weight, Float bodyFatPercentage, Float muscle) {
         this.member = member;
         this.height = height;
         this.weight = weight;
+        this.bodyFatPercentage = bodyFatPercentage;
+        this.muscle = muscle;
     }
 
-    public static BodyRecord newBodyRecord(Member member, Float height, Float weight) {
+    public static BodyRecord newBodyRecord(Member member, Float height, Float weight, Float bodyFatPercentage, Float muscle) {
         return BodyRecord.builder()
                 .member(member)
                 .height(height)
                 .weight(weight)
+                .bodyFatPercentage(bodyFatPercentage)
+                .muscle(muscle)
                 .build();
     }
 }
