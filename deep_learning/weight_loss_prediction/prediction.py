@@ -16,5 +16,6 @@ X[:,4] = le.fit_transform(X[:,4])
 sc = StandardScaler()
 X = sc.fit_transform(X)
 
+weight, hour, calorie, age, sex, fat = map(float,input().split())
 #print(ann.predict(sc.transform([[몸무게, 주당 운동시간, 1일 섭취 칼로리, 나이, 성별(여자=0,남자=1), 체지방량]])))
-print(loaded_model.predict(sc.transform([[52, 6, 1800, 24, 1, 27.0]])))
+print(loaded_model.predict(sc.transform([[weight, hour, calorie, age, sex, fat]])))
