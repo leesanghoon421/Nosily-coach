@@ -1,12 +1,17 @@
 package com.inti.nosily_coach.domain.BodyRecord.service;
 
+import com.inti.nosily_coach.auth.repository.MemberRepository;
 import com.inti.nosily_coach.domain.BodyRecord.model.BodyRecord;
+import com.inti.nosily_coach.domain.BodyRecord.model.dto.CreateBodyRecordRequest;
+import com.inti.nosily_coach.domain.BodyRecord.model.dto.CreateBodyRecordResponse;
 import com.inti.nosily_coach.domain.BodyRecord.model.dto.GetBodyRecordsResponse;
 import com.inti.nosily_coach.domain.BodyRecord.repository.BodyRecordRepository;
+import com.inti.nosily_coach.domain.Member.model.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -17,6 +22,7 @@ import java.util.stream.Collectors;
 @Service
 public class BodyRecordServiceImpl implements BodyRecordService {
     private final BodyRecordRepository bodyRecordRepository;
+    private final MemberRepository memberRepository;
 
     // # 몸기록 전체 조회
     @Override
@@ -36,5 +42,19 @@ public class BodyRecordServiceImpl implements BodyRecordService {
         BodyRecord record = bodyRecordRepository.findByDate(memberId, localDate);
         return GetBodyRecordsResponse.of(record.getId(), record.getHeight(), record.getWeight(),
                 record.getBodyFatPercentage(), record.getMuscle(), record.getCreatedAt().format(DateTimeFormatter.ofPattern("yy년 MM월 dd일 E요일")));
+    }
+
+    // # 몸기록 작성
+    @Override
+    @Transactional
+    public CreateBodyRecordResponse createBodyRecord(Long memberId, @RequestBody CreateBodyRecordRequest request) {
+        Member member = memberRepository.findById(memberId).orElseThrow(() -> new RuntimeException("존재하지 않은 회원입니다."));
+        if (bodyRecordRepository.recordNumOfDate(memberId, LocalDate.now()) > 0) {
+            throw new RuntimeException("이미 오늘 작성된 몸기록이 있습니다.");
+        }
+        BodyRecord bodyRecord = bodyRecordRepository.save(request.toEntity(member, request.getHeight(),
+                request.getWeight(), request.getBodyFatPercentage(), request.getMuscle()));
+
+        return CreateBodyRecordResponse.of(bodyRecord.getId());
     }
 }
