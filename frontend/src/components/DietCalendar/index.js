@@ -64,12 +64,12 @@ const DietCalendar = ({ setSubCategory }) => {
       <div>
         <SubTitle>영양분 섭취량</SubTitle>
         <styled.ContentsBox>
-          <div>fghfgh</div>
-          <div>fghfgh</div>
-          <div>fghfgh</div>
-          <div>fghfgh</div>
-          <div style={}></>
-          <div>총 칼로리 {칼로리} kcal</div>
+          <styled.Nutrient>단백질,지방,탄수화물데이터</styled.Nutrient>
+          <styled.Comment>적당,과다,부족평가</styled.Comment>
+          <styled.TotalKcal>총 칼로리 {칼로리} kcal</styled.TotalKcal>
+
+
+          
         </styled.ContentsBox>
       </div>
     </styled.Container>

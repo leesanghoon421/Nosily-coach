@@ -37,6 +37,7 @@ export const Block = styled.div`
   border-radius: 16px;
 `;
 
+
 export const ExerciseContainer = styled.div`
  position: absolute;
 width: 320px;
