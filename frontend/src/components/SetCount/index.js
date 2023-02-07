@@ -12,8 +12,6 @@ const SetCount = () => {
 
             <div>{달성갯수}/{목표갯수}</div>
             
-
-
         </styled.SetCount>
     );
 

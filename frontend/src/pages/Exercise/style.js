@@ -67,7 +67,6 @@ export const NextButton = styled.button`
   background-color: white;
   border : white;
   padding-left: 10px; 
-  padding-bottom: 10px;
   font-size: 20px; 
   cursor: pointer;
   margin-right: 10px;

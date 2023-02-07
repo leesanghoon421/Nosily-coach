@@ -43,7 +43,7 @@ const Excercise = () => {
   const location = useLocation(); //현재 URL을 가져온다
   const currentUrl = location.pathname; // 가져온 URL 정보에서 pathname 속성값을 가져와 currentUrl 변수에 저장
   //즉, 현재 URL을 currentUrl 변수에 저장하고 있다는 것
-console.log(Excercise)
+
   return (
     <div>
       <styled.Pointblock>
