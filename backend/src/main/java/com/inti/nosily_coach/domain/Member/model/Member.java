@@ -34,10 +34,10 @@ public class Member {
     private String sex;
 
     @Column(name = "age", unique = true)
-    private String age;
+    private Long age;
 
     @Builder //생성을 Builder 패턴으로 하기 위해서
-    public Member(Long id, String name, String email, String provider, String nickname, String sex, String age) {
+    public Member(Long id, String name, String email, String provider, String nickname, String sex, Long age) {
         this.id = id;
         this.name = name;
         this.email = email;
