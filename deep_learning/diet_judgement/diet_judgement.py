@@ -2,9 +2,9 @@ import requests
 
 def diet_judgment(age, height, weight, gender, calorie, protein, carbohydrate, fat, exercise_time):
     bmr = 0
-    if gender == 'male':
+    if gender == 1:
         bmr = 66 + (13.7 * weight) + (5 * height) - (6.8 * age)
-    elif gender == 'female':
+    elif gender == 0:
         bmr = 655 + (9.6 * weight) + (1.8 * height) - (4.7 * age)
 
     # Calculating Total Energy Expenditure (TEE)
@@ -67,11 +67,11 @@ def diet_judgment(age, height, weight, gender, calorie, protein, carbohydrate, f
     else:
         print("Failed to send data to the server.")
 
-        
+
 age = int(input())
 height = float(input())
 weight = float(input())
-gender = str(input()) 
+gender = int(input()) 
 calorie = float(input()) 
 protein = float(input()) 
 carbohydrate = float(input()) 
