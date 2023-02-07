@@ -5,9 +5,7 @@ import com.inti.nosily_coach.domain.Exercise.service.ExerciseService;
 import com.inti.nosily_coach.domain.common.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import org.springframework.data.domain.Pageable;
 import java.util.List;

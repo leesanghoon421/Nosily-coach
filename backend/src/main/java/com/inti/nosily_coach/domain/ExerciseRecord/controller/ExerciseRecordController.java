@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -30,7 +31,7 @@ public class ExerciseRecordController {
     // # 운동 기록 수정
     @PatchMapping("/api/exerciseRecords/{recordId}")
     public ApiResponse<UpdateExerciseRecordResponse> updateExerciseRecord(
-            Long memberId, @PathVariable("recordId") Long recordId, @RequestBody String memo) {
+            Long memberId, @PathVariable("recordId") Long recordId, @RequestBody(required = false) String memo) {
         UpdateExerciseRecordResponse response = exerciseRecordService.updateExerciseRecord(memberId, recordId, memo);
 
         return ApiResponse.success(response);
@@ -46,4 +47,11 @@ public class ExerciseRecordController {
     }
 
     // # 운동 기록 날짜별 조회
+    @GetMapping("/api/exerciseRecords/date")
+    public ApiResponse<GetExerciseRecordResponse> getExerciseRecordByDate(
+            Long memberId, @RequestParam LocalDate localDate) {
+        GetExerciseRecordResponse response = exerciseRecordService.getExerciseRecordByDate(memberId, localDate);
+
+        return ApiResponse.success(response);
+    }
 }
