@@ -6,6 +6,7 @@ import Timer from "pages/Exercise/Timer";
 import Routine from "pages/Routine";
 import InputRoutine from "pages/InputRoutine";
 import MyPage from "pages/MyPage";
+import Workset from "pages/Exercise/Workset";
 
 import TopBar from "components/TopBar";
 import BottomNav from "components/BottomNav";
@@ -18,6 +19,7 @@ const App = () => {
   const [hidden, setHidden] = useState(false);
   const [navValue, setNavValue] = useState(0);
   const navigate = useNavigate();
+
   useEffect(() => {
     if (navValue === 0) navigate("/dietetics");
     else if (navValue === 1) navigate("/");
@@ -50,6 +52,7 @@ const App = () => {
             />
           }
         />
+
         <Route
           path="/exercise/*"
           element={
@@ -59,7 +62,7 @@ const App = () => {
             />
           }
         >
-          <Route path="timer" element={<Timer />} />
+          <Route path="workset" element={<Workset />} />
         </Route>
         <Route path="/routine/" element={<Routine />} />
         <Route path="/routineset/" element={<InputRoutine />} />
