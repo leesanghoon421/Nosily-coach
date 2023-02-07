@@ -9,29 +9,20 @@ const ExerciseButton = ({ part }) => {
 
   return (
     <>
-     
-        {/* 버튼을 클릭하면 timer 페이지로 이동
-        <Link to="timer"> */}
-        <styled.ExerciseButton >
-          {/* color prop을 전달하여 버튼 색상을 지정 */}
-          <styled.Work>
-            
-            <SubTitle>{part}</SubTitle>
-            
-            <styled.WorkAttribute>
-              <div>{운동시간}</div>
-              <div>{목표달성}</div>
-            </styled.WorkAttribute>
+      <styled.ExerciseButton>
+        {/* color prop을 전달하여 버튼 색상을 지정 */}
+        <styled.Work>
+          <SubTitle>{part}</SubTitle>
 
-          </styled.Work>
-          <styled.EditRemove>
-            
-            <styled.EditButton>Edit</styled.EditButton>
-
-
-          </styled.EditRemove>
-        </styled.ExerciseButton>
-     { /*</Link>*/}
+          <styled.WorkAttribute>
+            <div>{운동시간}</div>
+            <div>{목표달성}</div>
+          </styled.WorkAttribute>
+        </styled.Work>
+        <Link to="workset">
+          <styled.EditButton>Edit</styled.EditButton>
+        </Link>
+      </styled.ExerciseButton>
     </>
   );
 };

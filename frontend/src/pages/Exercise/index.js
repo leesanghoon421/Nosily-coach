@@ -47,32 +47,34 @@ const Excercise = ({ setLargeCategory, setSubCategory, setHidden }) => {
   setHidden(false);
   return (
     <styled.Container>
-      <div>
-        <SubTitle>총 운동시간</SubTitle>
-        <ContentsBox height={50}>
-          <div>{총운동시간}초</div>
-        </ContentsBox>
-      </div>
-      {/*{currentUrl !== "/exercise" ? ( //현재 URL이 "/exercise"가 아니라면 <Outlet /> 컴포넌트만이 렌더링. 타이머가 렌더링?
+      {currentUrl !== "/exercise" ? ( //현재 URL이 "/exercise"가 아니라면 <Outlet /> 컴포넌트만이 렌더링. 타이머가 렌더링?
         <>
           <Outlet />
         </>
-  ) : ( //현재 URL이 "/exercise"라면 styled.ExerciseContainer 컴포넌트가 렌더링*/}
+      ) : (
+        //현재 URL이 "/exercise"라면 styled.ExerciseContainer 컴포넌트가 렌더링
+        <>
+          <div>
+            <SubTitle>총 운동시간</SubTitle>
+            <ContentsBox height={50}>
+              <div>{총운동시간}초</div>
+            </ContentsBox>
+          </div>
+          <div>
+            <styled.DateContainer>{Date}</styled.DateContainer>
 
-      <div>
-        <styled.DateContainer>{Date}</styled.DateContainer>
-        
-
-        <styled.ExerciseContainer>
-          {buttonAttribute.map(
-            (
-              element //styled.ExerciseContainer는 buttonAttribute 배열을 map()함수를 사용하여 '반복'하면서 ExerciseButton 컴포넌트를 렌더링
-            ) => (
-              <ExerciseButton part={element.part} />
-            )
-          )}
-        </styled.ExerciseContainer>
-      </div>
+            <styled.ExerciseContainer>
+              {buttonAttribute.map(
+                (
+                  element //styled.ExerciseContainer는 buttonAttribute 배열을 map()함수를 사용하여 '반복'하면서 ExerciseButton 컴포넌트를 렌더링
+                ) => (
+                  <ExerciseButton part={element.part} />
+                )
+              )}
+            </styled.ExerciseContainer>
+          </div>
+        </>
+      )}
     </styled.Container>
   );
 };
