@@ -9,31 +9,35 @@ import SubTitle from "components/SubTitle";
 const Workset = () => {
   const [운동명, set운동명] = useState("레그프레스");
   const [운동진행시간, set운동진행시간] = useState("00:10:30");
-  const [운동진행횟수, set운동진행횟수] = useState("3번씩3세트");
+  const [운동진행횟수, set운동진행횟수] = useState("3");
+  const [세트, set세트] = useState("3");
+
   return (
     <>
       <styled.Container>
         <styled.Container>
           <SubTitle>운동명</SubTitle>
-          <ContentsBox height={60}>
+          <ContentsBox height={50}>
             <div style={{ textAlign: "center" }}>{운동명}</div>
           </ContentsBox>
         </styled.Container>
         <styled.Container>
           <SubTitle>운동 진행 시간</SubTitle>
-          <ContentsBox height={60}>
+          <ContentsBox height={50}>
             <div style={{ textAlign: "center" }}>{운동진행시간}</div>
           </ContentsBox>
         </styled.Container>
         <styled.Container>
           <SubTitle>운동 진행 횟수</SubTitle>
           <styled.RowContainer>
-            <ContentsBox width={1} height={60}>
+            <ContentsBox width={100} height={50}>
               <div style={{ textAlign: "center" }}>{운동진행횟수}</div>
             </ContentsBox>
-            <ContentsBox width={1} height={60}>
-              <div style={{ textAlign: "center" }}>{운동진행횟수}</div>
+            <div>번씩</div>
+            <ContentsBox width={100} height={50}>
+              <div style={{ textAlign: "center" }}>{세트}</div>
             </ContentsBox>
+            <div>세트</div>
           </styled.RowContainer>
         </styled.Container>
       </styled.Container>
