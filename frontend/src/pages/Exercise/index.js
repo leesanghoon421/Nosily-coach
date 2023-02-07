@@ -33,7 +33,7 @@ const buttonAttribute = [
   },
 ];
 // Excercise 컴포넌트 정의
-const Excercise = ({ setLargeCategory, setSubCategory }) => {
+const Excercise = ({ setLargeCategory, setSubCategory, setHidden }) => {
   const [운동주제, set운동주제] = useState("헬스"); // 운동주제를 관리하는 상태 선언 및 초기화
   const [총운동시간, set총운동시간] = useState(0); // 총운동시간을 관리하는 상태 선언 및 초기화
   const [mark, setMark] = useState([]);
@@ -44,6 +44,7 @@ const Excercise = ({ setLargeCategory, setSubCategory }) => {
 
   setLargeCategory("운동");
   setSubCategory(운동주제);
+  setHidden(false);
   return (
     <styled.Container>
       {currentUrl !== "/exercise" ? ( //현재 URL이 "/exercise"가 아니라면 <Outlet /> 컴포넌트만이 렌더링. 타이머가 렌더링?

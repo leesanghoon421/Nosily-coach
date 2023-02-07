@@ -20,7 +20,7 @@ export const SubCategory = styled.div`
 `;
 
 export const ProfileImg = styled.img`
-  width: 44px;
-  height: 44px;
+  width: ${(props) => (props.width ? props.width : "44px")};
+  height: ${(props) => (props.width ? props.width : "44px")};
   border-radius: 50%;
 `;

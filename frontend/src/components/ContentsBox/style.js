@@ -12,7 +12,7 @@ export const ContentsBox = styled.div`
 
 export const InnerBox = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: ${(props) => props.axis};
   gap: 10px;
 
   padding: 15px;
