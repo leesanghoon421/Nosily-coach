@@ -17,5 +17,20 @@ export const Pointblock = styled.div`
   font-size: 26px;
   color: white;
   font-family: "Spoqa Han Sans Neo";
-  
+`;
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  ///justify-content: space-around;
+  gap: 10px;
+
+  //align-items: center;
+  //margin-top: 20px;
+  margin-bottom: 5em;
+`;
+export const RowContainer = styled.div`
+  display: flex;
+  flex-direction: row;
 `;
