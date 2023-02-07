@@ -17,28 +17,23 @@ import SubTitle from "components/SubTitle/index.js";
 const buttonAttribute = [
   //객체를 요소로 가지는 배열
   {
-    color: "red",
     part: "스쿼트",
   },
   {
-    color: "blue",
     part: "플랭크",
   },
   {
-    color: "green",
     part: "러닝",
   },
   {
-    color: "red",
     part: "어깨",
   },
   {
-    color: "blue",
     part: "하체",
   },
 ];
 // Excercise 컴포넌트 정의
-const Excercise = ({ setLargeCategory, setSubCategory }) => {
+const Excercise = ({ setLargeCategory, setSubCategory, setHidden }) => {
   const [운동주제, set운동주제] = useState("헬스"); // 운동주제를 관리하는 상태 선언 및 초기화
   const [총운동시간, set총운동시간] = useState(0); // 총운동시간을 관리하는 상태 선언 및 초기화
   const [mark, setMark] = useState([]);
@@ -49,14 +44,9 @@ const Excercise = ({ setLargeCategory, setSubCategory }) => {
 
   setLargeCategory("운동");
   setSubCategory(운동주제);
+  setHidden(false);
   return (
-    <div>
-      <div>
-        <SubTitle>총 운동시간</SubTitle>
-        <ContentsBox height={50}>
-          <div>{총운동시간}초</div>
-        </ContentsBox>
-      </div>
+    <styled.Container>
       {currentUrl !== "/exercise" ? ( //현재 URL이 "/exercise"가 아니라면 <Outlet /> 컴포넌트만이 렌더링. 타이머가 렌더링?
         <>
           <Outlet />
@@ -64,28 +54,28 @@ const Excercise = ({ setLargeCategory, setSubCategory }) => {
       ) : (
         //현재 URL이 "/exercise"라면 styled.ExerciseContainer 컴포넌트가 렌더링
         <>
-          <styled.DateContainer>
-            <styled.NextButton>«</styled.NextButton>
-            <div>{Date}</div>
-            <styled.NextButton>»</styled.NextButton>
-          </styled.DateContainer>
-          <styled.ExerciseContainer>
-            {buttonAttribute.map(
-              (
-                element //styled.ExerciseContainer는 buttonAttribute 배열을 map()함수를 사용하여 '반복'하면서 ExerciseButton 컴포넌트를 렌더링
-              ) => (
-                <ExerciseButton olor={element.color} part={element.part} />
-              )
-            )}
-          </styled.ExerciseContainer>
+          <div>
+            <SubTitle>총 운동시간</SubTitle>
+            <ContentsBox height={50}>
+              <div>{총운동시간}초</div>
+            </ContentsBox>
+          </div>
+          <div>
+            <styled.DateContainer>{Date}</styled.DateContainer>
 
-          <styled.AddButton>
-            {" "}
-            <div>+</div>{" "}
-          </styled.AddButton>
+            <styled.ExerciseContainer>
+              {buttonAttribute.map(
+                (
+                  element //styled.ExerciseContainer는 buttonAttribute 배열을 map()함수를 사용하여 '반복'하면서 ExerciseButton 컴포넌트를 렌더링
+                ) => (
+                  <ExerciseButton part={element.part} />
+                )
+              )}
+            </styled.ExerciseContainer>
+          </div>
         </>
       )}
-    </div>
+    </styled.Container>
   );
 };
 

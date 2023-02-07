@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const ContentsBox = styled.div`
-  width: 90vw;
-  height: ${(props) => `${props.height}px`};
+  width: ${props => (props.width ? `${props.width}px` : `90vw`)};
+  height: ${props => `${props.height}px`};
 
   margin-top: 8px;
 
@@ -12,7 +12,7 @@ export const ContentsBox = styled.div`
 
 export const InnerBox = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: ${props => props.axis};
   gap: 10px;
 
   padding: 15px;

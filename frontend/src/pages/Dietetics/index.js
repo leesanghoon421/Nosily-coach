@@ -8,7 +8,7 @@ import ContentsBox from "components/ContentsBox";
 import BoxItem from "components/ContentsBox/BoxItem";
 import * as styled from "./style.js";
 
-const Dietetics = ({ setLargeCategory, setSubCategory }) => {
+const Dietetics = ({ setLargeCategory, setSubCategory, setHidden }) => {
   const [value, onChange] = useState(new Date());
 
   const [음식목록들, set음식목록들] = useState([
@@ -27,7 +27,7 @@ const Dietetics = ({ setLargeCategory, setSubCategory }) => {
 
   setLargeCategory("식단 관리");
   setSubCategory(`${value.getMonth() + 1}월 ${value.getDate()}일의 식단`);
-
+  setHidden(false);
   return (
     <styled.Container>
       <div>
