@@ -7,8 +7,8 @@ flex-wrap: wrap;
 justify-content: space-between;
 //width: 108px;
 //height: 93px;
-left: 58px;
-top: 326px;
+//left: 58px;
+//top: 326px;
 //align-content: center;
 align-items: center;
 

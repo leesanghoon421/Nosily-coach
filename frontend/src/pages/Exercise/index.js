@@ -57,31 +57,21 @@ const Excercise = ({ setLargeCategory, setSubCategory }) => {
           <Outlet />
         </>
   ) : ( //현재 URL이 "/exercise"라면 styled.ExerciseContainer 컴포넌트가 렌더링*/}
-       
-       <>
-          <styled.DateContainer>
-            <styled.NextButton>‹</styled.NextButton>
-            <div>{Date}</div>
-            <styled.NextButton>›</styled.NextButton>
-          </styled.DateContainer>
-          <styled.Container>
-            <styled.ExerciseContainer>
-              {buttonAttribute.map(
-                (
-                  element //styled.ExerciseContainer는 buttonAttribute 배열을 map()함수를 사용하여 '반복'하면서 ExerciseButton 컴포넌트를 렌더링
-                ) => (
-                  <ExerciseButton part={element.part} />
-                )
-              )}
-            </styled.ExerciseContainer>
 
-            <styled.AddButton>
-              {" "}
-              <div>+</div>{" "}
-            </styled.AddButton>
-          </styled.Container>
-        </>
-      
+      <div>
+        <styled.DateContainer>{Date}</styled.DateContainer>
+        
+
+        <styled.ExerciseContainer>
+          {buttonAttribute.map(
+            (
+              element //styled.ExerciseContainer는 buttonAttribute 배열을 map()함수를 사용하여 '반복'하면서 ExerciseButton 컴포넌트를 렌더링
+            ) => (
+              <ExerciseButton part={element.part} />
+            )
+          )}
+        </styled.ExerciseContainer>
+      </div>
     </styled.Container>
   );
 };
