@@ -1,3 +1,4 @@
+import SubTitle from "components/SubTitle/index.js";
 import * as styled from "./style.js";
 
 const Home = ({ setLargeCategory, setSubCategory }) => {
@@ -8,19 +9,19 @@ const Home = ({ setLargeCategory, setSubCategory }) => {
     <>
       <styled.Container>
         <div>
-          <styled.SubTitle>오늘의 목표 달성 정도</styled.SubTitle>
+          <SubTitle>오늘의 목표 달성 정도</SubTitle>
           <styled.GoalBox>내용</styled.GoalBox>
         </div>
         <div>
-          <styled.SubTitle>운동 기록</styled.SubTitle>
+          <SubTitle>운동 기록</SubTitle>
           <styled.ContentsBox>내용</styled.ContentsBox>
         </div>
         <div>
-          <styled.SubTitle>몸 상태</styled.SubTitle>
+          <SubTitle>몸 상태</SubTitle>
           <styled.ContentsBox>내용</styled.ContentsBox>
         </div>
         <div>
-          <styled.SubTitle>몸무게 감량 예측치</styled.SubTitle>
+          <SubTitle>몸무게 감량 예측치</SubTitle>
           <styled.ContentsBox>내용</styled.ContentsBox>
         </div>
       </styled.Container>
