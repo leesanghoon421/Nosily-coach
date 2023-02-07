@@ -1,13 +1,18 @@
 package com.inti.nosily_coach.domain.food.repository;
 
 import com.inti.nosily_coach.domain.food.model.Food;
+import com.querydsl.core.types.Ops;
+import com.querydsl.core.types.dsl.NumberOperation;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.*;
 
 import static com.inti.nosily_coach.domain.food.model.QFood.food;
+import static com.querydsl.core.types.dsl.Expressions.numberOperation;
 
 @RequiredArgsConstructor
 public class FoodRepositoryCustomImpl implements FoodRepositoryCustom {
@@ -39,5 +44,20 @@ public class FoodRepositoryCustomImpl implements FoodRepositoryCustom {
                 .limit(pageable.getPageSize())
                 .offset(pageable.getOffset())
                 .fetch();
+    }
+
+    @Override
+    @Transactional
+    public Food findFoodByDate(Long memberId, Long foodId, LocalDate localDate) {
+        NumberOperation<Integer> toYear = numberOperation(Integer.class, Ops.DateTimeOps.YEAR, food.createdAt);
+        NumberOperation<Integer> toMonth = numberOperation(Integer.class, Ops.DateTimeOps.MONTH, food.createdAt);
+        NumberOperation<Integer> toDay = numberOperation(Integer.class, Ops.DateTimeOps.DAY_OF_MONTH, food.createdAt);
+        return queryFactory.selectFrom(food)
+                .where(
+                        food.id.eq(foodId),
+                        toYear.eq(localDate.getYear()),
+                        toMonth.eq(localDate.getMonthValue()),
+                        toDay.eq(localDate.getDayOfMonth())
+                ).fetchOne();
     }
 }
