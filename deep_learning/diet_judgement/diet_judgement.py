@@ -1,11 +1,21 @@
 import requests
 
+calorie_judgement = "default"
+protein_judgement = "default"
+carbohydrate_judgement = "default"
+fat_judgement = "default"
+
 def diet_judgment(age, height, weight, gender, calorie, protein, carbohydrate, fat, exercise_time):
     bmr = 0
     if gender == 1:
         bmr = 66 + (13.7 * weight) + (5 * height) - (6.8 * age)
     elif gender == 0:
         bmr = 655 + (9.6 * weight) + (1.8 * height) - (4.7 * age)
+
+    global calorie_judgement
+    global protein_judgement
+    global carbohydrate_judgement
+    global fat_judgement
 
     # Calculating Total Energy Expenditure (TEE)
     tee = bmr * (1.2 + (0.175 * exercise_time))
@@ -45,35 +55,35 @@ def diet_judgment(age, height, weight, gender, calorie, protein, carbohydrate, f
     else:
         fat_judgement = "Balanced fat"
 
-    data = {
-        "age": age,
-        "height": height,
-        "weight": weight,
-        "gender": gender,
-        "calorie": calorie,
-        "protein": protein,
-        "carbohydrate": carbohydrate,
-        "fat": fat,
-        "exercise_time": exercise_time,
-        "calorie_judgement": calorie_judgement,
-        "protein_judgement": protein_judgement,
-        "carbohydrate_judgement": carbohydrate_judgement,
-        "fat_judgement": fat_judgement
+output = {
+        "calorie": calorie_judgement,
+        "protein": protein_judgement,
+        "carbo": carbohydrate_judgement,
+        "fat": fat_judgement
     }
 
-    response = requests.post("http://localhost:8080/api/AI/getNutritionalInfo", json=data)
-    if response.status_code == 200:
+url = "http://localhost:8080/api/AI/getNutritionalInfo"
+response = requests.get(url)
+if response.status_code == 200:
+    data = response.json()
+    age = data["age"]
+    height = data["height"]
+    weight = data["weight"]
+    gender = data["gender"]
+    calorie = data["calorie"]
+    protein = data["protein"]
+    carbohydrate = data["carbohydrate"]
+    fat = data["fat"]
+    exercise_time = data["exercise_time"]
+    diet_judgment(age, height, weight, gender, calorie, protein, carbohydrate, fat, exercise_time)
+else:
+    print("Failed to retrieve data from the server.")
+
+
+
+response = requests.post(url, json= output)
+
+if response.status_code == 200:
         print("Data sent to the server successfully.")
-    else:
+else:
         print("Failed to send data to the server.")
-
-
-age = int(input())
-height = float(input())
-weight = float(input())
-gender = int(input()) 
-calorie = float(input()) 
-protein = float(input()) 
-carbohydrate = float(input()) 
-fat = float(input()) 
-exercise_time = float(input())
