@@ -1,10 +1,7 @@
 package com.inti.nosily_coach.domain.DietRecord.Service;
 
-import com.inti.nosily_coach.auth.repository.MemberRepository;
-import com.inti.nosily_coach.domain.DietRecord.dto.DtoDietRecord;
-import com.inti.nosily_coach.domain.DietRecord.dto.ModifyDietRecord;
-import com.inti.nosily_coach.domain.DietRecord.dto.ResponseDietRecord;
-import com.inti.nosily_coach.domain.DietRecord.dto.RequestDietRecord;
+import com.inti.nosily_coach.auth.repository.OAuthRepository;
+import com.inti.nosily_coach.domain.DietRecord.dto.*;
 import com.inti.nosily_coach.domain.DietRecord.model.DietRecord;
 import com.inti.nosily_coach.domain.DietRecord.repository.DietRecordRepository;
 import com.inti.nosily_coach.domain.Eat.Service.EatService;
@@ -25,7 +22,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class DietRecordServiceImpl implements DietRecordService {
     private final DietRecordRepository dietRecordRepository;
-    private final MemberRepository memberRepository;
+    private final OAuthRepository memberRepository;
     private final EatService eatService;
 
     @Override
