@@ -18,13 +18,13 @@ import java.util.List;
 public class DietRecord extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
-    private Member member;
+    private Member member; // 회원 아이디
 
     @OneToMany(mappedBy = "dietRecord", cascade = CascadeType.ALL)
-    private List<Eat> eats = new ArrayList<>();
+    private List<Eat> eats = new ArrayList<>(); // 식단 기록
 
     @Column(length = 300)
-    private String memo;
+    private String memo; // 메모
 
     @Builder(access = AccessLevel.PRIVATE)
     private DietRecord(Member member, String memo) {
@@ -37,5 +37,9 @@ public class DietRecord extends BaseEntity {
                 .member(member)
                 .memo(memo)
                 .build();
+    }
+
+    public void updateMemo(String memo) { // 메모 수정하는 메서드
+        this.memo = memo;
     }
 }
