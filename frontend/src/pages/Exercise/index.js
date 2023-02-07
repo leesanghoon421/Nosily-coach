@@ -17,23 +17,18 @@ import SubTitle from "components/SubTitle/index.js";
 const buttonAttribute = [
   //객체를 요소로 가지는 배열
   {
-    color: "red",
     part: "스쿼트",
   },
   {
-    color: "blue",
     part: "플랭크",
   },
   {
-    color: "green",
     part: "러닝",
   },
   {
-    color: "red",
     part: "어깨",
   },
   {
-    color: "blue",
     part: "하체",
   },
 ];
@@ -51,42 +46,34 @@ const Excercise = ({ setLargeCategory, setSubCategory, setHidden }) => {
   setSubCategory(운동주제);
   setHidden(false);
   return (
-    <div>
+    <styled.Container>
       <div>
         <SubTitle>총 운동시간</SubTitle>
         <ContentsBox height={50}>
           <div>{총운동시간}초</div>
         </ContentsBox>
       </div>
-      {currentUrl !== "/exercise" ? ( //현재 URL이 "/exercise"가 아니라면 <Outlet /> 컴포넌트만이 렌더링. 타이머가 렌더링?
+      {/*{currentUrl !== "/exercise" ? ( //현재 URL이 "/exercise"가 아니라면 <Outlet /> 컴포넌트만이 렌더링. 타이머가 렌더링?
         <>
           <Outlet />
         </>
-      ) : (
-        //현재 URL이 "/exercise"라면 styled.ExerciseContainer 컴포넌트가 렌더링
-        <>
-          <styled.DateContainer>
-            <styled.NextButton>«</styled.NextButton>
-            <div>{Date}</div>
-            <styled.NextButton>»</styled.NextButton>
-          </styled.DateContainer>
-          <styled.ExerciseContainer>
-            {buttonAttribute.map(
-              (
-                element //styled.ExerciseContainer는 buttonAttribute 배열을 map()함수를 사용하여 '반복'하면서 ExerciseButton 컴포넌트를 렌더링
-              ) => (
-                <ExerciseButton olor={element.color} part={element.part} />
-              )
-            )}
-          </styled.ExerciseContainer>
+  ) : ( //현재 URL이 "/exercise"라면 styled.ExerciseContainer 컴포넌트가 렌더링*/}
 
-          <styled.AddButton>
-            {" "}
-            <div>+</div>{" "}
-          </styled.AddButton>
-        </>
-      )}
-    </div>
+      <div>
+        <styled.DateContainer>{Date}</styled.DateContainer>
+        
+
+        <styled.ExerciseContainer>
+          {buttonAttribute.map(
+            (
+              element //styled.ExerciseContainer는 buttonAttribute 배열을 map()함수를 사용하여 '반복'하면서 ExerciseButton 컴포넌트를 렌더링
+            ) => (
+              <ExerciseButton part={element.part} />
+            )
+          )}
+        </styled.ExerciseContainer>
+      </div>
+    </styled.Container>
   );
 };
 
