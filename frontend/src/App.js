@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import "./App.css";
+import Home from "pages/Home";
 import Dietetics from "./pages/Dietetics";
 import Exercise from "./pages/Exercise";
 import Timer from "pages/Exercise/Timer";
@@ -10,7 +10,8 @@ const App = () => {
     <>
       {/* <Header /> */}
       <Routes>
-        <Route path="/" element={<Dietetics />} />
+        <Route path="/" element={<Home />}/>
+        <Route path="/dietetics" element={<Dietetics />} />
         <Route path="/exercise/*" element={<Exercise />}>
           <Route path="timer" element={<Timer />} />
 
