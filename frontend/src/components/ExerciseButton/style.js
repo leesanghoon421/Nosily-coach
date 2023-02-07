@@ -12,4 +12,5 @@ export const ExerciseButton = styled.div`
   line-height: 30px; // 줄 간격
   border: 1px solid ${props => props.color};
   margin: 1em;
+  border-radius: 15px;
 `;
