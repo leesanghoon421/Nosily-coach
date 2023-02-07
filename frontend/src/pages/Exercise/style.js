@@ -38,13 +38,23 @@ export const Block = styled.div`
 `;
 
 
-export const ExerciseContainer = styled.div`
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  align-items: center;
+ 
+  margin-top: 25px;
+`;
+
+export const ExerciseContainer = styled.div` //item1
 display: flex;
 flex-direction:column ;
 width: 320px;
-height: 363px;
-left: 20px;
-top: 315px;
+//height: 363px;
+//left: 20px;
+//top: 315px;
 
 background: #FFFFFF;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -55,18 +65,19 @@ font-family: "Spoqa Han Sans Neo";
 
 
 
-export const AddButton = styled.div`
+export const AddButton = styled.button`//item2
  
-position: absolute;
+//position:bottom ;
 width: 278px;
-height: 25px;
-left: 39px;
-top: 692px;
+height: 20px;
+//left: 39px;
+//top: 692px;
 
 background: #1E90FF;
+border-color: #1E90FF;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 50px;
-margin-top: 1em;
+margin: 10px;
 text-align: center;
 color: white;
 `;
@@ -75,18 +86,19 @@ export const DateContainer = styled.div`
   display: flex;
   flex-direction: row;
   
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  //align-items: center;
   width: 131px;
   height: 25px;
-  left: 116px;
-  top: 287px;
-  margin: 0 auto;
-  margin-top: 1em;
-  font-style: normal;
-  font-weight: 400;
+  //left: 116px;
+  //top: 287px;
+  //margin: 0 auto;
+//margin-top: 1em;
+  
+  font-weight: bold;
   font-size: 20px;
   line-height: 25px;
+ 
 `;
 export const NextButton = styled.button`
   background-color: white;
