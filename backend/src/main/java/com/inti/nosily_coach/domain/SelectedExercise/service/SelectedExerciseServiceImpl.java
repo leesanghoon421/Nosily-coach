@@ -74,6 +74,7 @@ public class SelectedExerciseServiceImpl implements SelectedExerciseService{
         min += sec > 59 ? (sec / 60) : 0;
         sec %= 60;
         hours += min > 59 ? (min / 60) : 0;
+        min %= 60;
         return LocalTime.of(hours, min, sec);
     }
 }

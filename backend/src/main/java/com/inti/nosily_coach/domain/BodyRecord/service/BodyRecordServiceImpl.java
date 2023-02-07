@@ -1,6 +1,6 @@
 package com.inti.nosily_coach.domain.BodyRecord.service;
 
-import com.inti.nosily_coach.auth.repository.MemberRepository;
+import com.inti.nosily_coach.auth.repository.OAuthRepository;
 import com.inti.nosily_coach.domain.BodyRecord.model.BodyRecord;
 import com.inti.nosily_coach.domain.BodyRecord.model.dto.*;
 import com.inti.nosily_coach.domain.BodyRecord.repository.BodyRecordRepository;
@@ -9,8 +9,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -21,7 +19,7 @@ import java.util.stream.Collectors;
 @Service
 public class BodyRecordServiceImpl implements BodyRecordService {
     private final BodyRecordRepository bodyRecordRepository;
-    private final MemberRepository memberRepository;
+    private final OAuthRepository memberRepository;
 
     // # 몸기록 전체 조회
     @Override
