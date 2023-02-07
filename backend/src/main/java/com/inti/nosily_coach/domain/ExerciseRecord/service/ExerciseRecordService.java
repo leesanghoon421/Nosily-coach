@@ -14,4 +14,5 @@ public interface ExerciseRecordService {
     UpdateExerciseRecordResponse updateExerciseRecord(Long memberId, Long recordId, String memo);
     List<GetExerciseRecordResponse> getAllExerciseRecords(Long memberId, Pageable pageable);
     GetExerciseRecordResponse getExerciseRecordByDate(Long memberId, LocalDate localDate);
+    Float getExerciseTimesOfWeek(Long memberId);
 }
