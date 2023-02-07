@@ -10,9 +10,9 @@ import org.jetbrains.annotations.NotNull;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ResponseEat {
-    private Food food; // 음식 정보
+    private Long eatId;
 
-    public static ResponseEat of(@NotNull Food food) {
-        return new ResponseEat(food);
+    public static ResponseEat of(@NotNull Long eatId) {
+        return new ResponseEat(eatId);
     }
 }

@@ -1,6 +1,7 @@
 package com.inti.nosily_coach.domain.DietRecord.repository;
 
 import com.inti.nosily_coach.domain.DietRecord.model.DietRecord;
+import com.inti.nosily_coach.domain.Eat.model.Eat;
 import com.querydsl.core.types.Ops;
 import com.querydsl.core.types.dsl.NumberOperation;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -9,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static com.inti.nosily_coach.domain.DietRecord.model.QDietRecord.dietRecord;
@@ -51,5 +53,18 @@ public class DietRecordRepositoryCustomImpl implements DietRecordRepositoryCusto
                         toMonth.eq(localDate.getMonthValue()),
                         toDay.eq(localDate.getDayOfMonth())
                 ).fetchOne();
+    }
+
+    @Override
+    public List<List<Eat>> getTimeOfWeek(Long memberId, LocalDate localDate) {
+        LocalDate start = localDate.minusDays(7);
+        LocalDateTime findStart = LocalDateTime.of(start.getYear(), start.getMonthValue(), start.getDayOfMonth(), 0, 0, 0);
+        LocalDateTime findEnd = LocalDateTime.of(start.getYear(), start.getMonthValue(), start.getDayOfMonth(),23 ,59, 59);
+
+        return queryFactory.select(dietRecord.eats).from(dietRecord)
+                .where(
+                        dietRecord.member.id.eq(memberId),
+                        dietRecord.createdAt.between(findStart, findEnd)
+                ).fetch();
     }
 }
