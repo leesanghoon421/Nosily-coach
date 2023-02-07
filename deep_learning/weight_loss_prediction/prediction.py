@@ -24,4 +24,29 @@ sex = int(input())
 fat = float(input())
 
 #print(ann.predict(sc.transform([[몸무게, 주당 운동시간, 1일 섭취 칼로리, 나이, 성별(여자=0, 남자=1), 체지방량]])))
-print(loaded_model.predict(sc.transform([[weight, hour, calorie, age, sex, fat]])))
+#print(loaded_model.predict(sc.transform([[weight, hour, calorie, age, sex, fat]])))
+
+import requests
+
+# Define the API endpoint URL
+url = "http://localhost:8080/api/AI/predictWeight"
+
+# Define the data to send to the API
+data = {
+    "weight": weight,
+    "hour": hour,
+    "calorie": calorie,
+    "age": age,
+    "sex": sex,
+    "fat": fat
+}
+
+# Make a POST request to the API
+response = requests.post(url, json=data)
+
+# Check if the request was successful
+if response.status_code == 200:
+    # Print the prediction returned by the API
+    print(response.json()["prediction"])
+else:
+    print("Failed to connect to the API. Response code:", response.status_code)
