@@ -59,3 +59,16 @@ export const NextButton = styled.button`
   margin-right: 10px;
   margin-left: 10px;
 `;
+export const Block = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 320px;
+  height: 77px;
+  margin: 0 auto;
+  margin-top: 1em;
+
+  background: #fdfeff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+`;

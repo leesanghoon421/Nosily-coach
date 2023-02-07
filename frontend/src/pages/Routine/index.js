@@ -8,12 +8,13 @@ const Routine = () => {
   return (
     <>
       <styled.Pointblock>운동 루틴</styled.Pointblock>
-
-      <styled.DateContainer>
-        <styled.NextButton>«</styled.NextButton>
-        <div>{Date}</div>
-        <styled.NextButton>»</styled.NextButton>
-      </styled.DateContainer>
+      <styled.Block>
+        <styled.DateContainer>
+         
+          <div>{Date}</div>
+          
+        </styled.DateContainer>
+      </styled.Block>
 
       <styled.RoutineContainer>
         <RoutineBox />

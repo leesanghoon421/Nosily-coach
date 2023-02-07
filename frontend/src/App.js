@@ -27,7 +27,15 @@ const App = () => {
             />
           }
         />
-        <Route path="/dietetics" element={<Dietetics />} />
+        <Route
+          path="/dietetics"
+          element={
+            <Dietetics
+              setLargeCategory={setLargeCategory}
+              setSubCategory={setSubCategory}
+            />
+          }
+        />
         <Route path="/exercise/*" element={<Exercise />}>
           <Route path="timer" element={<Timer />} />
         </Route>

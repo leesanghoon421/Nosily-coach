@@ -1,5 +1,13 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  align-items: center;
+`;
+
 export const Block = styled.div`
   background-color: #fcffe7;
   width: 50vw;
@@ -37,27 +45,24 @@ export const Title = styled.div`
   line-height: 1.5;
   margin-top: 10px;
 
-  
   //border: 1px solid black;
   //text-align: center;
   display: black;
-  margin:auto;
+  margin: auto;
   margin-top: 30px;
-  
 `;
 
 export const Pointblock = styled.div`
-position: absolute;
-width: 360px;
-height: 128px;
-left: 0px;
-top: 0px;
-background: #1E90FF;
+  position: absolute;
+  width: 360px;
+  height: 128px;
+  left: 0px;
+  top: 0px;
+  background: #1e90ff;
 `;
 
-
 export const TopContainer = styled.div`
-  position: absolute;
+  padding: 1em;
   width: 332px;
   height: 176px;
   left: 13px;
@@ -68,8 +73,7 @@ export const TopContainer = styled.div`
   border-radius: 16px;
 `;
 
-export const Container = styled.div`
-  position: absolute;
+export const ContentsBox = styled.div`
   width: 332px;
   height: 284px;
   left: 13px;
@@ -80,13 +84,7 @@ export const Container = styled.div`
   border-radius: 16px;
 `;
 
-export const CalBox = styled.div`
-  position: top;
-  width: 155px;
-  height: 23px;
-  left: 94px;
-  top: 680px;
-`;
+
 
 export const Nutrient = styled.div`
   position: top;
@@ -94,4 +92,13 @@ export const Nutrient = styled.div`
   height: 23px;
   left: 94px;
   top: 680px;
+`;
+
+export const PointText = styled.div`
+  color: #1e90ff;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: left;
 `;
