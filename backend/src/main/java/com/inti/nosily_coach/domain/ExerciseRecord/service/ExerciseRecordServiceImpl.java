@@ -59,7 +59,8 @@ public class ExerciseRecordServiceImpl implements ExerciseRecordService {
         return exerciseRecordRepository.findAllWithPaging(memberId, pageable)
                 .stream().map(record -> GetExerciseRecordResponse.of(record.getId(),
                         selectedExerciseService.getSelectedExercise(record.getSelectedExercises()),
-                        record.getMemo(), record.getCreatedAt().format(DateTimeFormatter.ofPattern("MM월 dd일 E요일")))
+                        record.getMemo(), record.getCreatedAt().format(DateTimeFormatter.ofPattern("MM월 dd일 E요일")),
+                        selectedExerciseService.getTotalExerciseTime(record.getSelectedExercises()).format(DateTimeFormatter.ofPattern("hh:mm:ss")))
                 ).collect(Collectors.toList());
     }
 
@@ -70,7 +71,8 @@ public class ExerciseRecordServiceImpl implements ExerciseRecordService {
         ExerciseRecord exerciseRecord = exerciseRecordRepository.findByDate(memberId, localDate);
         return GetExerciseRecordResponse.of(exerciseRecord.getId(),
                 selectedExerciseService.getSelectedExercise(exerciseRecord.getSelectedExercises()),
-                exerciseRecord.getMemo(), exerciseRecord.getCreatedAt().format(DateTimeFormatter.ofPattern("MM월 dd일 E요일")));
+                exerciseRecord.getMemo(), exerciseRecord.getCreatedAt().format(DateTimeFormatter.ofPattern("MM월 dd일 E요일")),
+                selectedExerciseService.getTotalExerciseTime(exerciseRecord.getSelectedExercises()).format(DateTimeFormatter.ofPattern("hh:mm:ss")));
     }
 
     // # AI : 일주일 운동 시간
