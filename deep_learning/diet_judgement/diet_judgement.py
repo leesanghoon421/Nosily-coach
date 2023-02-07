@@ -67,6 +67,7 @@ def diet_judgment(age, height, weight, gender, calorie, protein, carbohydrate, f
     else:
         print("Failed to send data to the server.")
 
+        
 age = int(input())
 height = float(input())
 weight = float(input())
