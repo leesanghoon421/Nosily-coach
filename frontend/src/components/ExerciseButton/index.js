@@ -19,7 +19,7 @@ const ExerciseButton = ({ part }) => {
             <div>{목표달성}</div>
           </styled.WorkAttribute>
         </styled.Work>
-        <Link to="workset">
+        <Link to="/exercise/workset">
           <styled.EditButton>Edit</styled.EditButton>
         </Link>
       </styled.ExerciseButton>
