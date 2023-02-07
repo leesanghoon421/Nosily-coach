@@ -5,7 +5,7 @@ const TopBar = ({ largeCategory, subCategory }) => {
     <>
       <styled.Container>
         <styled.LargeCategory>{largeCategory}</styled.LargeCategory>
-        <styled.Subcategory>{subCategory}</styled.Subcategory>
+        <styled.SubCategory>{subCategory}</styled.SubCategory>
       </styled.Container>
     </>
   );

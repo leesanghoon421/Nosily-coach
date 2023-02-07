@@ -10,7 +10,8 @@ export const LargeCategory = styled.div`
   color: white;
 `;
 
-export const Subcategory = styled.div`
+export const SubCategory = styled.div`
   font-size: 26px;
+  font-weight: bold;
   color: white;
 `;

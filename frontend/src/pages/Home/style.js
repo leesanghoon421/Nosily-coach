@@ -9,11 +9,6 @@ export const Container = styled.div`
   margin-top: 25px;
 `;
 
-export const SubTitle = styled.div`
-  font-size: 18px;
-  font-weight: bold;
-`;
-
 export const GoalBox = styled.div`
   width: 90vw;
   height: 130px;
