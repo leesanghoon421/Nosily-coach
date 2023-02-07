@@ -1,6 +1,7 @@
 package com.inti.nosily_coach.domain.ExerciseRecord.repository;
 
 import com.inti.nosily_coach.domain.ExerciseRecord.model.ExerciseRecord;
+import com.inti.nosily_coach.domain.SelectedExercise.model.SelectedExercise;
 import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDate;
@@ -11,4 +12,5 @@ public interface ExerciseRecordRepositoryCustom {
     Long getNumOfTodayRecord(Long memberId, LocalDate date);
     List<ExerciseRecord> findAllWithPaging(Long memberId, Pageable pageable);
     ExerciseRecord findByDate(Long memberId, LocalDate localDate);
+    List<List<SelectedExercise>> getTimeOfWeek(Long memberId, LocalDate localDate);
 }
