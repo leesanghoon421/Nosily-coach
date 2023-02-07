@@ -46,19 +46,26 @@ const DietCalendar = ({ setSubCategory }) => {
           </styled.CalenderContainer> */}
       <div>
         <SubTitle>오늘의 식단</SubTitle>
+        <></>
         <styled.TopContainer>
-          <div>
+          <styled.ContentsBox>
             {" "}
             <styled.PointText>아침</styled.PointText> {음식목록들[0]}{" "}
-          </div>
-          <div>
+          </styled.ContentsBox>
+
+          <styled.ContentsBox>
             {" "}
             <styled.PointText>점심</styled.PointText> {음식목록들[1]}{" "}
-          </div>
-          <div>
+          </styled.ContentsBox>
+          <styled.ContentsBox>
             {" "}
             <styled.PointText>저녁</styled.PointText> {음식목록들[2]}{" "}
-          </div>
+            
+            </styled.ContentsBox>
+            <styled.ContentsBox>
+              <styled.PointText>아침</styled.PointText> {음식목록들[0]}{" "}
+            </styled.ContentsBox>
+          
         </styled.TopContainer>
       </div>
       <div>
@@ -67,9 +74,6 @@ const DietCalendar = ({ setSubCategory }) => {
           <styled.Nutrient>단백질,지방,탄수화물데이터</styled.Nutrient>
           <styled.Comment>적당,과다,부족평가</styled.Comment>
           <styled.TotalKcal>총 칼로리 {칼로리} kcal</styled.TotalKcal>
-
-
-          
         </styled.ContentsBox>
       </div>
     </styled.Container>

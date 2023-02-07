@@ -39,7 +39,8 @@ export const Block = styled.div`
 
 
 export const ExerciseContainer = styled.div`
- position: absolute;
+display: flex;
+flex-direction:column ;
 width: 320px;
 height: 363px;
 left: 20px;
@@ -50,6 +51,9 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 10px;
 font-family: "Spoqa Han Sans Neo";
 `;
+
+
+
 
 export const AddButton = styled.div`
  
@@ -93,3 +97,6 @@ export const NextButton = styled.button`
   margin-right: 10px;
   margin-left: 10px;
 `;
+
+
+
