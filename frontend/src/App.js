@@ -36,7 +36,15 @@ const App = () => {
             />
           }
         />
-        <Route path="/exercise/*" element={<Exercise />}>
+        <Route
+          path="/exercise/*"
+          element={
+            <Exercise
+              setLargeCategory={setLargeCategory}
+              setSubCategory={setSubCategory}
+            />
+          }
+        >
           <Route path="timer" element={<Timer />} />
         </Route>
         <Route path="/routine/" element={<Routine />} />

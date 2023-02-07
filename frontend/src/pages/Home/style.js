@@ -8,23 +8,3 @@ export const Container = styled.div`
 
   margin-top: 25px;
 `;
-
-export const GoalBox = styled.div`
-  width: 90vw;
-  height: 130px;
-
-  margin-top: 8px;
-
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-`;
-
-export const ContentsBox = styled.div`
-  width: 90vw;
-  height: 60px;
-
-  margin-top: 5px;
-
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-`;

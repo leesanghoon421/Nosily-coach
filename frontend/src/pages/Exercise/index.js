@@ -11,6 +11,8 @@ import * as styled from "./style.js"; // styled.js 파일에서 정의한 스타
 import ExerciseButton from "components/ExerciseButton"; // ExerciseButton 컴포넌트 가져오기
 import { useLocation, Outlet } from "react-router-dom"; // react-router-dom의 useLocation, Outlet 함수 사용
 
+import ContentsBox from "components/ContentsBox";
+
 const buttonAttribute = [
   //객체를 요소로 가지는 배열
   {
@@ -35,7 +37,7 @@ const buttonAttribute = [
   },
 ];
 // Excercise 컴포넌트 정의
-const Excercise = () => {
+const Excercise = ({ setLargeCategory, setSubCategory }) => {
   const [운동주제, set운동주제] = useState("헬스"); // 운동주제를 관리하는 상태 선언 및 초기화
   const [총운동시간, set총운동시간] = useState(0); // 총운동시간을 관리하는 상태 선언 및 초기화
   const [mark, setMark] = useState([]);
@@ -44,18 +46,17 @@ const Excercise = () => {
   const currentUrl = location.pathname; // 가져온 URL 정보에서 pathname 속성값을 가져와 currentUrl 변수에 저장
   //즉, 현재 URL을 currentUrl 변수에 저장하고 있다는 것
 
+  setLargeCategory("운동");
+  setSubCategory(운동주제);
   return (
     <div>
-      <styled.Pointblock>
-        <div>{운동주제}</div>
-      </styled.Pointblock>
       <div>
-        <styled.Block>
-          <div>총 운동시간</div>
+        <div>총 운동시간</div>
+        <ContentsBox height={50}>
           <div>{총운동시간}초</div>
-        </styled.Block>
+        </ContentsBox>
       </div>
-      {currentUrl != "/exercise" ? ( //현재 URL이 "/exercise"가 아니라면 <Outlet /> 컴포넌트만이 렌더링. 타이머가 렌더링?
+      {currentUrl !== "/exercise" ? ( //현재 URL이 "/exercise"가 아니라면 <Outlet /> 컴포넌트만이 렌더링. 타이머가 렌더링?
         <>
           <Outlet />
         </>
