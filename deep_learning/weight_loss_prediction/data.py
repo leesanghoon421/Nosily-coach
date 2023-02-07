@@ -77,8 +77,6 @@ plt.title('male & female')
 plt.show()
 
 
-
-
 # Write the data to a CSV file
 with open("weight_loss_data.csv", "w") as f:
     writer = csv.DictWriter(f, fieldnames=["Primary weight", "Exercise hour per week", "Calorie intake per day", 
