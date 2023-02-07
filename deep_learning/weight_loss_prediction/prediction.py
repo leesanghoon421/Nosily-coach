@@ -31,18 +31,20 @@ response = requests.get(url)
 # Check if the request was successful
 if response.status_code == 200:
     data = response.json()
+    mem_id = data["memberId"]
     age = data["age"]
-    weight = data["weight"]
-    gender = data["gender"]
-    calorie = data["calorie"]
+    weight = data["todayWeight"]
+    gender = data["sex"]
+    calorie = data["kcal"]
     fat = data["fat"]
-    exercise_time = data["exercise_time"]
+    exercise_time = data["exerciseTimeOfWeek"]
     prediction = loaded_model.predict(sc.transform([[weight, exercise_time, calorie, age, gender, fat]]))
 else:
     print("Failed to connect to the API. Response code:", response.status_code)
 
 
 output = {
+        "memberId": mem_id,
         "prediction": prediction
     }
 

@@ -55,33 +55,36 @@ def diet_judgment(age, height, weight, gender, calorie, protein, carbohydrate, f
     else:
         fat_judgement = "Balanced fat"
 
+
+
+url = "http://localhost:8080/api/AI/getNutritionalInfo"     # url 설정
+response = requests.get(url)        # 함수를 실행하는데 필요한 data 백엔드에 요청
+# 자료를 담아두고 함수를 실행
+if response.status_code == 200:
+    data = response.json()
+    mem_id = data["memberId"]
+    age = data["age"]
+    height = data["todayHeight"]
+    weight = data["todayWeight"]
+    gender = data["sex"]
+    calorie = data["kcal"]
+    protein = data["protein"]
+    carbohydrate = data["Car"]
+    fat = data["fat"]
+    exercise_time = data["exerciseTimeOfWeek"]
+    diet_judgment(age, height, weight, gender, calorie, protein, carbohydrate, fat, exercise_time)
+else:
+    print("Failed to retrieve data from the server.")
+
 output = {
+        "memberId": mem_id,
         "calorie": calorie_judgement,
         "protein": protein_judgement,
         "carbo": carbohydrate_judgement,
         "fat": fat_judgement
     }
 
-url = "http://localhost:8080/api/AI/getNutritionalInfo"
-response = requests.get(url)
-if response.status_code == 200:
-    data = response.json()
-    age = data["age"]
-    height = data["height"]
-    weight = data["weight"]
-    gender = data["gender"]
-    calorie = data["calorie"]
-    protein = data["protein"]
-    carbohydrate = data["carbohydrate"]
-    fat = data["fat"]
-    exercise_time = data["exercise_time"]
-    diet_judgment(age, height, weight, gender, calorie, protein, carbohydrate, fat, exercise_time)
-else:
-    print("Failed to retrieve data from the server.")
-
-
-
-response = requests.post(url, json= output)
+response = requests.post(url, json= output) #실행 결과를 백엔드에 보내줌
 
 if response.status_code == 200:
         print("Data sent to the server successfully.")
