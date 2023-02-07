@@ -3,6 +3,7 @@ import * as styled from "./style.js";
 import { Link } from "react-router-dom";
 
 import { useLocation, Outlet } from "react-router-dom"; // react-router-dom의 useLocation, Outlet 함수 사용
+import ContentsInnerBox from "components/ContentsInnerBox";
 import ContentsBox from "components/ContentsBox";
 import SubTitle from "components/SubTitle";
 
@@ -17,26 +18,26 @@ const Workset = () => {
       <styled.Container>
         <styled.Container>
           <SubTitle>운동명</SubTitle>
-          <ContentsBox height={50}>
+          <ContentsInnerBox height={50}>
             <div style={{ textAlign: "center" }}>{운동명}</div>
-          </ContentsBox>
+          </ContentsInnerBox>
         </styled.Container>
         <styled.Container>
           <SubTitle>운동 진행 시간</SubTitle>
-          <ContentsBox height={50}>
+          <ContentsInnerBox height={50}>
             <div style={{ textAlign: "center" }}>{운동진행시간}</div>
-          </ContentsBox>
+          </ContentsInnerBox>
         </styled.Container>
         <styled.Container>
           <SubTitle>운동 진행 횟수</SubTitle>
           <styled.RowContainer>
-            <ContentsBox width={100} height={50}>
+            <ContentsInnerBox width={100} height={50}>
               <div style={{ textAlign: "center" }}>{운동진행횟수}</div>
-            </ContentsBox>
+            </ContentsInnerBox>
             <div>번씩</div>
-            <ContentsBox width={100} height={50}>
+            <ContentsInnerBox width={100} height={50}>
               <div style={{ textAlign: "center" }}>{세트}</div>
-            </ContentsBox>
+            </ContentsInnerBox>
             <div>세트</div>
           </styled.RowContainer>
         </styled.Container>
