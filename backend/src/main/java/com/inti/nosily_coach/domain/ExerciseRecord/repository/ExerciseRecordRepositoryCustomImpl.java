@@ -1,6 +1,7 @@
 package com.inti.nosily_coach.domain.ExerciseRecord.repository;
 
 import com.inti.nosily_coach.domain.ExerciseRecord.model.ExerciseRecord;
+import com.inti.nosily_coach.domain.SelectedExercise.model.SelectedExercise;
 import com.querydsl.core.types.Ops;
 import com.querydsl.core.types.dsl.NumberOperation;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -8,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static com.inti.nosily_coach.domain.ExerciseRecord.model.QExerciseRecord.exerciseRecord;
@@ -75,5 +77,19 @@ public class ExerciseRecordRepositoryCustomImpl implements ExerciseRecordReposit
                         toMonth.eq(localDate.getMonthValue()),
                         toDay.eq(localDate.getDayOfMonth())
                 ).fetchOne();
+    }
+
+    // # 일주일 운동 시간 조회
+    @Override
+    public List<List<SelectedExercise>> getTimeOfWeek(Long memberId, LocalDate localDate) {
+        LocalDate start = localDate.minusDays(7);
+        LocalDateTime findStart = LocalDateTime.of(start.getYear(), start.getMonthValue(), start.getDayOfMonth(), 0, 0, 0);
+        LocalDateTime findEnd = LocalDateTime.of(localDate.getYear(), localDate.getMonthValue(), localDate.getDayOfMonth(), 23, 59, 59, 999999);
+
+        return queryFactory.select(exerciseRecord.selectedExercises).from(exerciseRecord)
+                .where(
+                        exerciseRecord.member.id.eq(memberId),
+                        exerciseRecord.createdAt.between(findStart, findEnd)
+                ).fetch();
     }
 }

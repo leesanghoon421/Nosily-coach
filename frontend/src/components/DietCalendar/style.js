@@ -66,7 +66,7 @@ export const TopContainer = styled.div`
   width: 332px;
   height: 176px;
   left: 13px;
-  top: 190px;
+  top: 190px;//컨테이너 위치
 
   background: #fdfeff;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
@@ -74,6 +74,13 @@ export const TopContainer = styled.div`
 `;
 
 export const ContentsBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  //align-items: stretch;
+  flex-grow: 1;
+  //align-content: stretch;
+  //justify-content: 'space-between';
+  padding: 1em;
   width: 332px;
   height: 284px;
   left: 13px;
@@ -85,20 +92,36 @@ export const ContentsBox = styled.div`
 `;
 
 
-
-export const Nutrient = styled.div`
+export const Nutrient = styled.div`//item1
   position: top;
-  width: 155px;
-  height: 23px;
+  //width: 155px;
+  //height: 23px;
   left: 94px;
   top: 680px;
+  padding: 0 auto;
+`;
+
+export const Comment = styled.div`//item2
+
+`;
+
+export const TotalKcal = styled.div`//item3
+  font-weight: bold;
+  
 `;
 
 export const PointText = styled.div`
-  color: #1e90ff;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 20px;
-  letter-spacing: 0em;
-  text-align: left;
+  color:#1E90FF;
+  font-weight: bold;
+
+`;
+
+export const EditAdd = styled.div`
+color:#5686B6;
+font-size: 16px;
+`;
+
+export const TitleBox = styled.div`
+  display: flex;
+  flex-direction: column;
 `;

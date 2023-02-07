@@ -12,4 +12,5 @@ public interface BodyRecordService {
     CreateBodyRecordResponse createBodyRecord(Long memberId, CreateBodyRecordRequest request);
     UpdateBodyRecordResponse updateBodyRecord(Long memberId, Long recordId, UpdateBodyRecordRequest request);
     DeleteBodyRecordResponse deleteBodyRecord(Long memberId, Long recordId);
+    GetBodyRecordInfoForAIResponse getBodyRecordInfo(Long memberId, LocalDate localDate);
 }

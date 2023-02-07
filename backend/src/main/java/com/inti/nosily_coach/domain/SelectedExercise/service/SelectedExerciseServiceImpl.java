@@ -58,4 +58,23 @@ public class SelectedExerciseServiceImpl implements SelectedExerciseService{
                 exercise -> GetSelectedExerciseResponse.of(exercise.getExercise().getId(), exercise.getExercise().getName(),
                         exercise.getCounts(), exercise.getSetCnt())).collect(Collectors.toList());
     }
+
+    // # 총 운동 시간 반환
+    @Override
+    @Transactional(readOnly = true)
+    public LocalTime getTotalExerciseTime(List<SelectedExercise> exercises) {
+        int hours = 0;
+        int min = 0;
+        int sec = 0;
+        for (SelectedExercise s : exercises) {
+            hours += s.getTimes().getHour();
+            min += s.getTimes().getMinute();
+            sec += s.getTimes().getSecond();
+        }
+        min += sec > 59 ? (sec / 60) : 0;
+        sec %= 60;
+        hours += min > 59 ? (min / 60) : 0;
+        min %= 60;
+        return LocalTime.of(hours, min, sec);
+    }
 }

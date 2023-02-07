@@ -1,6 +1,6 @@
 package com.inti.nosily_coach.domain.ExerciseRecord.service;
 
-import com.inti.nosily_coach.auth.repository.MemberRepository;
+import com.inti.nosily_coach.auth.repository.OAuthRepository;
 import com.inti.nosily_coach.domain.ExerciseRecord.model.ExerciseRecord;
 import com.inti.nosily_coach.domain.ExerciseRecord.model.dto.CreateExerciseRecordRequest;
 import com.inti.nosily_coach.domain.ExerciseRecord.model.dto.CreateExerciseRecordResponse;
@@ -8,6 +8,7 @@ import com.inti.nosily_coach.domain.ExerciseRecord.model.dto.GetExerciseRecordRe
 import com.inti.nosily_coach.domain.ExerciseRecord.model.dto.UpdateExerciseRecordResponse;
 import com.inti.nosily_coach.domain.ExerciseRecord.repository.ExerciseRecordRepository;
 import com.inti.nosily_coach.domain.Member.model.Member;
+import com.inti.nosily_coach.domain.SelectedExercise.model.SelectedExercise;
 import com.inti.nosily_coach.domain.SelectedExercise.service.SelectedExerciseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -15,7 +16,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,7 +26,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ExerciseRecordServiceImpl implements ExerciseRecordService {
     private final ExerciseRecordRepository exerciseRecordRepository;
-    private final MemberRepository memberRepository;
+    private final OAuthRepository memberRepository;
     private final SelectedExerciseService selectedExerciseService;
 
     // # 운동기록 작성
@@ -56,7 +59,8 @@ public class ExerciseRecordServiceImpl implements ExerciseRecordService {
         return exerciseRecordRepository.findAllWithPaging(memberId, pageable)
                 .stream().map(record -> GetExerciseRecordResponse.of(record.getId(),
                         selectedExerciseService.getSelectedExercise(record.getSelectedExercises()),
-                        record.getMemo(), record.getCreatedAt().format(DateTimeFormatter.ofPattern("MM월 dd일 E요일")))
+                        record.getMemo(), record.getCreatedAt().format(DateTimeFormatter.ofPattern("MM월 dd일 E요일")),
+                        selectedExerciseService.getTotalExerciseTime(record.getSelectedExercises()).format(DateTimeFormatter.ofPattern("hh:mm:ss")))
                 ).collect(Collectors.toList());
     }
 
@@ -67,6 +71,29 @@ public class ExerciseRecordServiceImpl implements ExerciseRecordService {
         ExerciseRecord exerciseRecord = exerciseRecordRepository.findByDate(memberId, localDate);
         return GetExerciseRecordResponse.of(exerciseRecord.getId(),
                 selectedExerciseService.getSelectedExercise(exerciseRecord.getSelectedExercises()),
-                exerciseRecord.getMemo(), exerciseRecord.getCreatedAt().format(DateTimeFormatter.ofPattern("MM월 dd일 E요일")));
+                exerciseRecord.getMemo(), exerciseRecord.getCreatedAt().format(DateTimeFormatter.ofPattern("MM월 dd일 E요일")),
+                selectedExerciseService.getTotalExerciseTime(exerciseRecord.getSelectedExercises()).format(DateTimeFormatter.ofPattern("hh:mm:ss")));
+    }
+
+    // # AI : 일주일 운동 시간
+    @Override
+    @Transactional(readOnly = true)
+    public Float getExerciseTimesOfWeek(Long memberId) {
+        LocalDate localDate = LocalDate.now();
+        List<LocalTime> localTimes  = new ArrayList<>();
+        List<List<SelectedExercise>> getTimesOfWeek = exerciseRecordRepository.getTimeOfWeek(memberId, localDate);
+        getTimesOfWeek.stream().map(
+                selected -> selected.stream().map(
+                        inSelected -> localTimes.add(inSelected.getTimes())
+                )
+        );
+
+        Float totalTimes = 0f;
+        for (LocalTime time : localTimes) {
+            totalTimes += time.getHour();
+            totalTimes += time.getMinute() / 60;
+            totalTimes += time.getSecond() / 3600;
+        }
+        return totalTimes;
     }
 }

@@ -9,22 +9,38 @@ export const Container = styled.div`
   margin-top: 25px;
 `;
 
-export const GoalBox = styled.div`
-  width: 90vw;
-  height: 130px;
-
-  margin-top: 8px;
-
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
+export const BoxItem = styled.div`
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
 `;
 
-export const ContentsBox = styled.div`
-  width: 90vw;
-  height: 60px;
+export const Height = styled.div`
+  font-weight: bold;
+  font-size: 24px;
+`;
 
-  margin-top: 5px;
+export const Weight = styled.div`
+  font-weight: bold;
+  font-size: 24px;
 
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
+  margin-left: 10px;
+`;
+
+export const Intake = styled.div`
+  font-weight: bold;
+  font-size: 24px;
+  margin-right: 5px;
+`;
+
+export const TotalTime = styled.div`
+  font-weight: bold;
+  font-size: 24px;
+`;
+
+export const Description = styled.div`
+  color: var(--color-manatee);
+  text-align: center;
 `;

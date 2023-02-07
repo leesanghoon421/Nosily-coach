@@ -25,7 +25,7 @@ public class BodyRecordController {
 
     // # 몸기록 전체 조회
     @GetMapping("/api/bodyRecords")
-    public ApiResponse<List<GetBodyRecordsResponse>> getAllBodyRecords(Long memberId, @PageableDefault(size = 5)Pageable pageable) {
+    public ApiResponse<List<GetBodyRecordsResponse>> getAllBodyRecords(Long memberId, @PageableDefault(size = 5) Pageable pageable) {
         List<GetBodyRecordsResponse> getBodyRecordsResponses = bodyRecordService.getAllBodyRecords(memberId, pageable);
         return ApiResponse.success(getBodyRecordsResponses);
     }
