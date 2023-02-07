@@ -23,7 +23,7 @@ const Routine = ({ setSubCategory }) => {
           <SubTitle>추천 루틴 목록</SubTitle>
           <styled.RoutineContainer>
             {parts.map(element => (
-              <styled.BoxContents to="info">
+              <styled.BoxContents to="/exercise/info">
                 <img src="img/icon.png" alt="icon" />
                 {element}
               </styled.BoxContents>

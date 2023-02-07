@@ -48,10 +48,10 @@ const Today = ({ setSubCategory }) => {
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <styled.DateContainer>{Date}</styled.DateContainer>
             <div>
-              <Link to="select" style={{ marginRight: "10px" }}>
+              <Link to="/exercise/select" style={{ marginRight: "10px" }}>
                 추가
               </Link>
-              <Link to="routine">추천 루틴</Link>
+              <Link to="/exercise/routine">추천 루틴</Link>
             </div>
           </div>
           <styled.ExerciseContainer>
