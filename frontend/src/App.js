@@ -16,7 +16,7 @@ const App = () => {
   const [largeCategory, setLargeCategory] = useState("");
   const [subCategory, setSubCategory] = useState("");
   const [hidden, setHidden] = useState(false);
-  const [navValue, setNavValue] = useState(0);
+  const [navValue, setNavValue] = useState(1);
   const navigate = useNavigate();
   useEffect(() => {
     if (navValue === 0) navigate("/dietetics");
@@ -38,6 +38,7 @@ const App = () => {
             <Home
               setLargeCategory={setLargeCategory}
               setSubCategory={setSubCategory}
+              setHidden={setHidden}
             />
           }
         />
@@ -47,6 +48,7 @@ const App = () => {
             <Dietetics
               setLargeCategory={setLargeCategory}
               setSubCategory={setSubCategory}
+              setHidden={setHidden}
             />
           }
         />
@@ -56,6 +58,7 @@ const App = () => {
             <Exercise
               setLargeCategory={setLargeCategory}
               setSubCategory={setSubCategory}
+              setHidden={setHidden}
             />
           }
         >
@@ -63,7 +66,17 @@ const App = () => {
         </Route>
         <Route path="/routine/" element={<Routine />} />
         <Route path="/routineset/" element={<InputRoutine />} />
-        <Route path="/mypage" element={<MyPage setHidden={setHidden} />} />
+        <Route
+          path="/mypage"
+          element={
+            <MyPage
+              setNavValue={setNavValue}
+              setLargeCategory={setLargeCategory}
+              setSubCategory={setSubCategory}
+              setHidden={setHidden}
+            />
+          }
+        />
       </Routes>
       <BottomNav navValue={navValue} setNavValue={setNavValue} />
     </>

@@ -2,9 +2,10 @@ import SubTitle from "components/SubTitle";
 import ContentsBox from "components/ContentsBox";
 import * as styled from "./style.js";
 
-const Home = ({ setLargeCategory, setSubCategory }) => {
+const Home = ({ setLargeCategory, setSubCategory, setHidden }) => {
   setLargeCategory("꼬치코치");
   setSubCategory("요약");
+  setHidden(false);
 
   return (
     <>
