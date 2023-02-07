@@ -23,23 +23,18 @@ public class DietRecord extends BaseEntity {
     @OneToMany(mappedBy = "dietRecord", cascade = CascadeType.ALL)
     private List<Eat> eats = new ArrayList<>();
 
-    @Column(nullable = false)
-    private String time; // 아침, 점심, 저녁, 간식
-
     @Column(length = 300)
     private String memo;
 
     @Builder(access = AccessLevel.PRIVATE)
-    private DietRecord(Member member, String time, String memo) {
+    private DietRecord(Member member, String memo) {
         this.member = member;
-        this.time = time;
         this.memo = memo;
     }
 
-    public static DietRecord newDietRecord(Member member, String time, String memo) {
+    public static DietRecord newDietRecord(Member member, String memo) {
         return DietRecord.builder()
                 .member(member)
-                .time(time)
                 .memo(memo)
                 .build();
     }

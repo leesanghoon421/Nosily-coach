@@ -77,4 +77,12 @@ public class BodyRecordServiceImpl implements BodyRecordService {
         bodyRecordRepository.delete(bodyRecord);
         return deleteBodyRecordResponse;
     }
+
+    // # AI : 오늘 몸무게, 키 전달
+    @Override
+    @Transactional
+    public GetBodyRecordInfoForAIResponse getBodyRecordInfo(Long memberId, LocalDate localDate) {
+        BodyRecord record = bodyRecordRepository.findByDate(memberId, localDate);
+        return GetBodyRecordInfoForAIResponse.of(record.getHeight(), record.getWeight(), record.getBodyFatPercentage());
+    }
 }
