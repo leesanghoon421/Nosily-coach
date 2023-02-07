@@ -12,6 +12,7 @@ import ExerciseButton from "components/ExerciseButton"; // ExerciseButton 컴포
 import { useLocation, Outlet } from "react-router-dom"; // react-router-dom의 useLocation, Outlet 함수 사용
 
 import ContentsBox from "components/ContentsBox";
+import SubTitle from "components/SubTitle/index.js";
 
 const buttonAttribute = [
   //객체를 요소로 가지는 배열
@@ -51,7 +52,7 @@ const Excercise = ({ setLargeCategory, setSubCategory }) => {
   return (
     <div>
       <div>
-        <div>총 운동시간</div>
+        <SubTitle>총 운동시간</SubTitle>
         <ContentsBox height={50}>
           <div>{총운동시간}초</div>
         </ContentsBox>
@@ -73,7 +74,7 @@ const Excercise = ({ setLargeCategory, setSubCategory }) => {
               (
                 element //styled.ExerciseContainer는 buttonAttribute 배열을 map()함수를 사용하여 '반복'하면서 ExerciseButton 컴포넌트를 렌더링
               ) => (
-                <ExerciseButton color={element.color} part={element.part} />
+                <ExerciseButton olor={element.color} part={element.part} />
               )
             )}
           </styled.ExerciseContainer>

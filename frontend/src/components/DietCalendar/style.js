@@ -111,6 +111,17 @@ export const TotalKcal = styled.div`//item3
 `;
 
 export const PointText = styled.div`
+  color:#1E90FF;
+  font-weight: bold;
 
 `;
 
+export const EditAdd = styled.div`
+color:#5686B6;
+font-size: 16px;
+`;
+
+export const TitleBox = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
