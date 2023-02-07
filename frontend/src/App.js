@@ -2,8 +2,8 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import Home from "pages/Home";
 import Dietetics from "pages/Dietetics";
 import Exercise from "pages/Exercise";
-import Timer from "pages/Exercise/Timer";
-import Routine from "pages/Routine";
+import Routine from "pages/Exercise/Routine";
+import RoutineInfo from "pages/Exercise/RoutineInfo";
 import InputRoutine from "pages/InputRoutine";
 import MyPage from "pages/MyPage";
 import Workset from "pages/Exercise/Workset";
@@ -63,11 +63,17 @@ const App = () => {
               setSubCategory={setSubCategory}
               setHidden={setHidden}
             />
-          }
-        >
+          }>
           <Route path="workset" element={<Workset />} />
+          <Route
+            path="routine/*"
+            element={<Routine setSubCategory={setSubCategory} />}>
+            <Route
+              path="info"
+              element={<RoutineInfo setSubCategory={setSubCategory} />}
+            />
+          </Route>
         </Route>
-        <Route path="/routine/" element={<Routine />} />
         <Route path="/routineset/" element={<InputRoutine />} />
         <Route
           path="/mypage"

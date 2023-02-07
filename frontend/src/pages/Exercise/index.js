@@ -9,7 +9,7 @@
 import { useState } from "react"; // react의 useState 함수 사용
 import * as styled from "./style.js"; // styled.js 파일에서 정의한 스타일들 가져오기
 import ExerciseButton from "components/ExerciseButton"; // ExerciseButton 컴포넌트 가져오기
-import { useLocation, Outlet } from "react-router-dom"; // react-router-dom의 useLocation, Outlet 함수 사용
+import { Link, useLocation, Outlet } from "react-router-dom"; // react-router-dom의 useLocation, Outlet 함수 사용
 
 import ContentsBox from "components/ContentsBox";
 import SubTitle from "components/SubTitle/index.js";
@@ -43,8 +43,9 @@ const Excercise = ({ setLargeCategory, setSubCategory, setHidden }) => {
   //즉, 현재 URL을 currentUrl 변수에 저장하고 있다는 것
 
   setLargeCategory("운동");
-  setSubCategory(운동주제);
+  setSubCategory("오늘의 운동");
   setHidden(false);
+
   return (
     <styled.Container>
       {currentUrl !== "/exercise" ? ( //현재 URL이 "/exercise"가 아니라면 <Outlet /> 컴포넌트만이 렌더링. 타이머가 렌더링?
@@ -61,8 +62,10 @@ const Excercise = ({ setLargeCategory, setSubCategory, setHidden }) => {
             </ContentsBox>
           </div>
           <div>
-            <styled.DateContainer>{Date}</styled.DateContainer>
-
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <styled.DateContainer>{Date}</styled.DateContainer>
+              <Link to="routine">추천 루틴</Link>
+            </div>
             <styled.ExerciseContainer>
               {buttonAttribute.map(
                 (
