@@ -49,7 +49,7 @@ const Dietetics = ({ setLargeCategory, setSubCategory }) => {
       </div>
       <div>
         <SubTitle>영양분 섭취량</SubTitle>
-        <ContentsBox height={250}>
+        <ContentsBox height={260}>
           <div style={{ display: "flex", justifyContent: "space-around" }}>
             <styled.Nutrient>
               <styled.NutrientCircle color={"#FFE072"}>
@@ -70,7 +70,7 @@ const Dietetics = ({ setLargeCategory, setSubCategory }) => {
               <div>지방</div>
             </styled.Nutrient>
           </div>
-          <div>
+          <div style={{ marginTop: "10px" }}>
             <styled.Comment>
               <styled.CommentCircle color={"#1E90FF"} />
               적당해요!
