@@ -1,19 +1,27 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Home from "pages/Home";
-import Dietetics from "./pages/Dietetics";
-import Exercise from "./pages/Exercise";
+import Dietetics from "pages/Dietetics";
+import Exercise from "pages/Exercise";
 import Timer from "pages/Exercise/Timer";
 import Routine from "pages/Routine/index";
 import InputRoutine from "pages/InputRoutine/index";
 
 import TopBar from "components/TopBar";
 import BottomNav from "components/BottomNav";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // jsx
 const App = () => {
   const [largeCategory, setLargeCategory] = useState("");
   const [subCategory, setSubCategory] = useState("");
+  const [navValue, setNavValue] = useState(0);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (navValue === 0) navigate("/dietetics");
+    else if (navValue === 1) navigate("/");
+    else if (navValue === 2) navigate("/exercise");
+  }, [navValue]);
+
   return (
     <>
       <TopBar largeCategory={largeCategory} subCategory={subCategory} />
@@ -50,7 +58,7 @@ const App = () => {
         <Route path="/routine/" element={<Routine />} />
         <Route path="/routineset/" element={<InputRoutine />} />
       </Routes>
-      <BottomNav />
+      <BottomNav navValue={navValue} setNavValue={setNavValue} />
     </>
   );
 };

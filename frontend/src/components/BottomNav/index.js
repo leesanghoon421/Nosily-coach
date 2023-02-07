@@ -6,10 +6,7 @@ import RestaurantIcon from "@mui/icons-material/Restaurant";
 import HomeIcon from "@mui/icons-material/Home";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 
-import * as styled from "./style.js";
-
-const BottomNav = () => {
-  const [value, setValue] = useState(0);
+const BottomNav = ({ navValue, setNavValue }) => {
   return (
     <BottomNavigation
       sx={{
@@ -30,9 +27,9 @@ const BottomNav = () => {
           },
         },
       }}
-      value={value}
+      value={navValue}
       onChange={(e, newValue) => {
-        setValue(newValue);
+        setNavValue(newValue);
       }}
       showLabels
     >
