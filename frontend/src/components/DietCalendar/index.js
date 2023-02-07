@@ -24,10 +24,10 @@ const DietCalendar = () => {
     <div>
       <div>
         <styled.Pointblock>
-          <h2>🍚식단 관리🥦</h2>
+          <h2>식단 관리</h2>
         </styled.Pointblock>
         
-        <styled.CalenderContainer>
+       {/* <styled.CalenderContainer>
           <Calendar
             onChange={onChange}
             formatDay={(locale, date) => moment(date).format("DD")}
@@ -45,19 +45,24 @@ const DietCalendar = () => {
               }
             }}
           />
-        </styled.CalenderContainer>
+          </styled.CalenderContainer> */}
         <styled.Title>{value.getDate()}일에 먹은 식단</styled.Title>
 
-        <styled.Block>
+        <styled.TopContainer>
           <h3>오늘 먹은 음식</h3>
           <p>아침: {음식목록들[0]} </p>
           <p>점심: {음식목록들[1]} </p>
           <p>저녁: {음식목록들[2]} </p>
-        </styled.Block>
-        <styled.Block>
-          <h3>총 칼로리 섭취량</h3>
-          <h4>{칼로리} kcal</h4>
-        </styled.Block>
+        </styled.TopContainer>
+        
+       
+        <styled.Container>
+          <div>fghfgh</div>
+          <div>fghfgh</div>
+          <div>fghfgh</div>
+          <div>fghfgh</div>
+          <styled.CalBox>총 칼로리 {칼로리} kcal</styled.CalBox>
+        </styled.Container>
       </div>
     </div>
   );

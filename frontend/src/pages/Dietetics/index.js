@@ -6,7 +6,7 @@ const Dietetics = () => {
   return (
     <>
         <DietCalendar />
-        <MealRecord />
+        {/*<MealRecord />*/}
         {/* <Timer/> */}
     </>
   );

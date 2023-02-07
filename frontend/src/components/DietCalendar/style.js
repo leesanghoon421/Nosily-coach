@@ -36,18 +36,62 @@ export const Title = styled.div`
   font-size: 18px;
   line-height: 1.5;
   margin-top: 10px;
-`;
-export const Pointblock = styled.div`
-  background-color: #EB455F;
-  color: white;
-  width: 50vw;
-  padding: 0.2em 0;
-  padding-left: 1em;
+
   
   //border: 1px solid black;
   //text-align: center;
   display: black;
-  margin: 0 auto;
+  margin:auto;
   margin-top: 30px;
   
+`;
+
+export const Pointblock = styled.div`
+position: absolute;
+width: 360px;
+height: 128px;
+left: 0px;
+top: 0px;
+background: #1E90FF;
+`;
+
+
+export const TopContainer = styled.div`
+  position: absolute;
+  width: 332px;
+  height: 176px;
+  left: 13px;
+  top: 190px;
+
+  background: #fdfeff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+`;
+
+export const Container = styled.div`
+  position: absolute;
+  width: 332px;
+  height: 284px;
+  left: 13px;
+  top: 434px;
+
+  background: #fdfeff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+`;
+
+export const CalBox = styled.div`
+  position: top;
+  width: 155px;
+  height: 23px;
+  left: 94px;
+  top: 680px;
+`;
+
+export const Nutrient = styled.div`
+  position: top;
+  width: 155px;
+  height: 23px;
+  left: 94px;
+  top: 680px;
 `;

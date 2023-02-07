@@ -17,7 +17,7 @@ export const Pointblock = styled.div`
 
 export const RoutineContainer = styled.div`
  //background-color: #fcffe7;
-  width: 50vw;
+  width: 30vw;
   border: 1px solid black;
   
   display: block;

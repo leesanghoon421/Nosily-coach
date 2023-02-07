@@ -11,7 +11,7 @@ export const RoutineBox = styled.div`
 
   padding-left:2em;
   border-top: 1px solid #444444;
-  margin: 10px 0px;
+
   //padding-top: 1em;
   //margin: 1em;
   //border-radius: 5px;
