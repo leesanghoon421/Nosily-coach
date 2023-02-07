@@ -16,4 +16,8 @@ public class CreateExerciseRecordRequest {
     public ExerciseRecord toEntity(Member member, String memo) {
         return ExerciseRecord.newExerciseRecord(member, memo);
     }
+
+    public  static CreateExerciseRecordRequest withEmpty() {
+        return new CreateExerciseRecordRequest();
+    }
 }

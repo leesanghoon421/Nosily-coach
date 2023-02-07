@@ -50,4 +50,10 @@ public class SelectedExercise extends BaseEntity {
                 .setCnt(setCnt)
                 .build();
     }
+
+    public void update(LocalTime times, int counts, int setCnt) {
+        this.times = times;
+        this.counts = counts;
+        this.setCnt = setCnt;
+    }
 }

@@ -36,7 +36,7 @@ public class ExerciseRecordRepositoryCustomImpl implements ExerciseRecordReposit
         NumberOperation<Integer> toYear = numberOperation(Integer.class, Ops.DateTimeOps.YEAR, exerciseRecord.createdAt);
         NumberOperation<Integer> toMonth = numberOperation(Integer.class, Ops.DateTimeOps.MONTH, exerciseRecord.createdAt);
         NumberOperation<Integer> toDay = numberOperation(Integer.class, Ops.DateTimeOps.DAY_OF_MONTH, exerciseRecord.createdAt);
-        return queryFactory.select(exerciseRecord.count())
+        return queryFactory.select(exerciseRecord.count()).from(exerciseRecord)
                 .where(
                         // memberId에 해당되는 record인지 확인
                         exerciseRecord.member.id.eq(memberId),
@@ -58,5 +58,22 @@ public class ExerciseRecordRepositoryCustomImpl implements ExerciseRecordReposit
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
+    }
+
+    // # 운동기록 날짜별 조회
+    @Override
+    public ExerciseRecord findByDate(Long memberId, LocalDate localDate) {
+        NumberOperation<Integer> toYear = numberOperation(Integer.class, Ops.DateTimeOps.YEAR, exerciseRecord.createdAt);
+        NumberOperation<Integer> toMonth = numberOperation(Integer.class, Ops.DateTimeOps.MONTH, exerciseRecord.createdAt);
+        NumberOperation<Integer> toDay = numberOperation(Integer.class, Ops.DateTimeOps.DAY_OF_MONTH, exerciseRecord.createdAt);
+        return queryFactory.selectFrom(exerciseRecord)
+                .where(
+                        // memberId에 해당되는 record인지 확인
+                        exerciseRecord.member.id.eq(memberId),
+                        // localDate에 해당되는 record
+                        toYear.eq(localDate.getYear()),
+                        toMonth.eq(localDate.getMonthValue()),
+                        toDay.eq(localDate.getDayOfMonth())
+                ).fetchOne();
     }
 }
