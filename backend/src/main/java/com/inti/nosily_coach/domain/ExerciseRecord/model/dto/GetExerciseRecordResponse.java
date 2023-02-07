@@ -16,9 +16,10 @@ public class GetExerciseRecordResponse {
     private List<GetSelectedExerciseResponse> selectedExercises;
     private String memo;
     private String createdAt;
+    private String totalTime;
 
     public static GetExerciseRecordResponse of(Long recordId, List<GetSelectedExerciseResponse> selectedExercises,
-                                               String memo, String createdAt) {
-        return new GetExerciseRecordResponse(recordId, selectedExercises, memo, createdAt);
+                                               String memo, String createdAt, String totalTime) {
+        return new GetExerciseRecordResponse(recordId, selectedExercises, memo, createdAt, totalTime);
     }
 }

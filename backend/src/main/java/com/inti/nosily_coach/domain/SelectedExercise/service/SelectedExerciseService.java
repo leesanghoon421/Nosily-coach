@@ -16,4 +16,5 @@ public interface SelectedExerciseService {
     void updateSelectedExercise(SelectedExercise selectedExercise, LocalTime times, int counts, int setCnt);
     void deleteSelectedExercise(Long memberId, DeleteSelectedExerciseRequest request);
     List<GetSelectedExerciseResponse> getSelectedExercise(List<SelectedExercise> selectedExercises);
+    LocalTime getTotalExerciseTime(List<SelectedExercise> exercises);
 }
