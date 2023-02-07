@@ -1,31 +1,36 @@
 import styled from "styled-components";
 
 export const Pointblock = styled.div`
-  background-color: #EB455F;
-  color: white;
-  width: 50vw;
-  padding: 0.2em 0;
-  padding-left: 1em;
-  
-  //border: 1px solid black;
-  //text-align: center;
-  display: black;
-  margin: 0 auto;
-  margin-top: 30px;
-  
+position: absolute;
+width: 360px;
+height: 128px;
+left: 0px;
+top: 0px;
+background: #1E90FF;
 `;
 
 export const RoutineContainer = styled.div`
- //background-color: #fcffe7;
-  width: 50vw;
-  color: #2b3467;
-  padding: 1em;
-  border: 1px solid black;
-  
-  text-align: center;
-  display: block;
-  //margin: 0 auto;
-  margin-top: 30px;
-  
+  box-sizing: border-box;
+
+  position: absolute;
+  width: 360px;
+  height: 537px;
+  left: 0px;
+  top: 163px;
+
+  background: #ffffff;
+  border-top: 1px solid #2b2d42;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 0px 0px 20px 20px;
+`;
+
+export const Line = styled.div`
+position: absolute;
+width: 320px;
+height: 0px;
+left: 20px;
+top: 243px;
+
+border: 1px solid #8D99AE;
 `;
 

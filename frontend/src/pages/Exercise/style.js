@@ -2,66 +2,91 @@ import styled from "styled-components";
 
 export const Timerblock = styled.div``;
 
+
 export const Pointblock = styled.div`
-  background-color: #eb455f;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding-bottom: 16px;
+  padding-left: 16px;
+
+  width: 360px;
+  height: 128px;
+
+  left: 0px;
+  top: 0px;
+  background: #1e90ff;
+  text-align: left;
+  font-size: 26px;
   color: white;
-  width: 50vw;
-  padding: 0.2em 0;
-  padding-left: 1em;
-  display: black;
-  margin: 0 auto;
-  margin-top: 30px;
+  font-family: "Spoqa Han Sans Neo";
+  
 `;
 
 export const Block = styled.div`
-  background-color: #fcffe7;
-  width: 50vw;
-  color: #2b3467;
-  padding: 1em 0;
-
-  text-align: center;
-  display: block;
-  margin: 0 auto;
-  margin-top: 30px;
-  border-radius: 15px;
-`;
-
-export const ExerciseContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  
-  width: 60vw;
-  margin: 10px auto;
-  border: 1px solid black;
-  border-radius: 15px;
+  width: 320px;
+  height: 77px;
+  margin: 0 auto;
+  margin-top: 1em;
+
+  background: #fdfeff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
 `;
 
-export const AddButton = styled.div`
-  background-color: gray;
-  width: 50vw;
-  color: #2b3467;
-  padding: 1em 0;
 
-  text-align: center;
-  display: block;
-  margin: 0 auto;
-  margin-top: 30px;
-  border-radius: 30px;
+export const ExerciseContainer = styled.div`
+display: flex;
+flex-direction:column ;
+width: 320px;
+height: 363px;
+left: 20px;
+top: 315px;
+
+background: #FFFFFF;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 10px;
+font-family: "Spoqa Han Sans Neo";
+`;
+
+
+
+
+export const AddButton = styled.div`
+ 
+position: absolute;
+width: 278px;
+height: 25px;
+left: 39px;
+top: 692px;
+
+background: #1E90FF;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 50px;
+margin-top: 1em;
+text-align: center;
+color: white;
 `;
 
 export const DateContainer = styled.div`
-   display: flex;
-   flex-direction: row;
-   
-   justify-content: space-evenly;
-   text-align: center;
-   font-size: 20px;
-   align-items: center;
-   width: 60vw;
-   margin: 30px auto;
-   
+  display: flex;
+  flex-direction: row;
+  
+  justify-content: center;
+  align-items: center;
+  width: 131px;
+  height: 25px;
+  left: 116px;
+  top: 287px;
+  margin: 0 auto;
+  margin-top: 1em;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 25px;
 `;
 export const NextButton = styled.button`
   background-color: white;
@@ -72,3 +97,6 @@ export const NextButton = styled.button`
   margin-right: 10px;
   margin-left: 10px;
 `;
+
+
+
