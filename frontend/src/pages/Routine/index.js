@@ -4,25 +4,23 @@ import { useLocation, Outlet } from "react-router-dom"; // react-router-dom의 u
 import RoutineBox from "components/RoutineBox";
 
 const Routine = () => {
-    
-
+  const [Date, SetDate] = useState("2023/2/7");
   return (
     <>
-      <styled.Pointblock>
-        <h2>운동 루틴</h2>
-      </styled.Pointblock>
-
-      <styled.DateContainer>
-
-        <div>운동일 지정</div>
-
-      </styled.DateContainer>
+      <styled.Pointblock>운동 루틴</styled.Pointblock>
+      <styled.Block>
+        <styled.DateContainer>
+         
+          <div>{Date}</div>
+          
+        </styled.DateContainer>
+      </styled.Block>
 
       <styled.RoutineContainer>
-          <RoutineBox/>
-          <RoutineBox/>
-          <RoutineBox/>
-          <RoutineBox/>
+        <RoutineBox />
+        <RoutineBox />
+        <RoutineBox />
+        <RoutineBox />
       </styled.RoutineContainer>
     </>
   );

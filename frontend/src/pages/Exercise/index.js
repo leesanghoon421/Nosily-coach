@@ -39,7 +39,7 @@ const Excercise = () => {
   const [운동주제, set운동주제] = useState("헬스"); // 운동주제를 관리하는 상태 선언 및 초기화
   const [총운동시간, set총운동시간] = useState(0); // 총운동시간을 관리하는 상태 선언 및 초기화
   const [mark, setMark] = useState([]);
-  const[Date,SetDate]=useState("2023/2/7")
+  const [Date, SetDate] = useState("2023/2/7");
   const location = useLocation(); //현재 URL을 가져온다
   const currentUrl = location.pathname; // 가져온 URL 정보에서 pathname 속성값을 가져와 currentUrl 변수에 저장
   //즉, 현재 URL을 currentUrl 변수에 저장하고 있다는 것
@@ -47,16 +47,14 @@ const Excercise = () => {
   return (
     <div>
       <styled.Pointblock>
-        <h2>🏃‍♂️{운동주제}</h2>
+        <div>{운동주제}</div>
       </styled.Pointblock>
-    <div>
-      <styled.Block>
-        <div>총 운동시간</div>
-        <div>{총운동시간}초</div>
-      </styled.Block>
-      
-     
-    </div>
+      <div>
+        <styled.Block>
+          <div>총 운동시간</div>
+          <div>{총운동시간}초</div>
+        </styled.Block>
+      </div>
       {currentUrl != "/exercise" ? ( //현재 URL이 "/exercise"가 아니라면 <Outlet /> 컴포넌트만이 렌더링. 타이머가 렌더링?
         <>
           <Outlet />
@@ -64,11 +62,11 @@ const Excercise = () => {
       ) : (
         //현재 URL이 "/exercise"라면 styled.ExerciseContainer 컴포넌트가 렌더링
         <>
-        <styled.DateContainer>
-        <styled.NextButton>«</styled.NextButton>
-        <div>{Date}</div>
-        <styled.NextButton>»</styled.NextButton>
-        </styled.DateContainer>
+          <styled.DateContainer>
+            <styled.NextButton>«</styled.NextButton>
+            <div>{Date}</div>
+            <styled.NextButton>»</styled.NextButton>
+          </styled.DateContainer>
           <styled.ExerciseContainer>
             {buttonAttribute.map(
               (

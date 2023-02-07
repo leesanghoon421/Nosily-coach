@@ -3,8 +3,9 @@ import Calendar from "react-calendar";
 import moment from "moment/moment.js";
 import "react-calendar/dist/Calendar.css"; // css import
 import * as styled from "./style.js";
+import SubTitle from "components/SubTitle";
 
-const DietCalendar = () => {
+const DietCalendar = ({ setSubCategory }) => {
   const [value, onChange] = useState(new Date());
 
   const [음식목록들, set음식목록들] = useState([
@@ -20,14 +21,11 @@ const DietCalendar = () => {
     setMark(["2023-01-02", "2023-01-03", "2022-01-10"]);
   }, []);
 
+  setSubCategory(`${value.getDate()}일에 먹은 식단`);
+
   return (
-    <div>
-      <div>
-        <styled.Pointblock>
-          <h2>식단 관리</h2>
-        </styled.Pointblock>
-        
-       {/* <styled.CalenderContainer>
+    <styled.Container>
+      {/* <styled.CalenderContainer>
           <Calendar
             onChange={onChange}
             formatDay={(locale, date) => moment(date).format("DD")}
@@ -46,25 +44,35 @@ const DietCalendar = () => {
             }}
           />
           </styled.CalenderContainer> */}
-        <styled.Title>{value.getDate()}일에 먹은 식단</styled.Title>
-
+      <div>
+        <SubTitle>오늘의 식단</SubTitle>
         <styled.TopContainer>
-          <h3>오늘 먹은 음식</h3>
-          <p>아침: {음식목록들[0]} </p>
-          <p>점심: {음식목록들[1]} </p>
-          <p>저녁: {음식목록들[2]} </p>
+          <div>
+            {" "}
+            <styled.PointText>아침</styled.PointText> {음식목록들[0]}{" "}
+          </div>
+          <div>
+            {" "}
+            <styled.PointText>점심</styled.PointText> {음식목록들[1]}{" "}
+          </div>
+          <div>
+            {" "}
+            <styled.PointText>저녁</styled.PointText> {음식목록들[2]}{" "}
+          </div>
         </styled.TopContainer>
-        
-       
-        <styled.Container>
-          <div>fghfgh</div>
-          <div>fghfgh</div>
-          <div>fghfgh</div>
-          <div>fghfgh</div>
-          <styled.CalBox>총 칼로리 {칼로리} kcal</styled.CalBox>
-        </styled.Container>
       </div>
-    </div>
+      <div>
+        <SubTitle>영양분 섭취량</SubTitle>
+        <styled.ContentsBox>
+          <div>fghfgh</div>
+          <div>fghfgh</div>
+          <div>fghfgh</div>
+          <div>fghfgh</div>
+          <div style={}></>
+          <div>총 칼로리 {칼로리} kcal</div>
+        </styled.ContentsBox>
+      </div>
+    </styled.Container>
   );
 };
 
