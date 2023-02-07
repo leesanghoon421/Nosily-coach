@@ -8,9 +8,11 @@ const ExerciseButton = ({ color, part }) => {
 
   return (
     <>
-      <Link to="timer">
-        <styled.ExerciseButton color={color}>
-          <div>{part}</div>
+      <Link to="timer">  
+      {/* 버튼을 클릭하면 timer 페이지로 이동 */}
+        <styled.ExerciseButton color={color}> 
+        {/* color prop을 전달하여 버튼 색상을 지정 */}
+          <div>{part}</div> 
           <div>{운동시간}</div>
           <div>{목표달성}</div>
         </styled.ExerciseButton>

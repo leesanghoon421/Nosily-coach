@@ -43,6 +43,7 @@ export const Pointblock = styled.div`
   width: 50vw;
   padding: 0.2em 0;
   padding-left: 1em;
+  
   //border: 1px solid black;
   //text-align: center;
   display: black;
