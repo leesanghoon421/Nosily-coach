@@ -27,15 +27,11 @@ public class EatServiceImpl implements EatService {
     private final DietRecordRepository dietRecordRepository;
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public List<DtoEat> viewEat(Long foodId, Pageable pageable) {
         return eatRepository.pageEat(foodId, pageable)
                 .stream().map(eat -> DtoEat.of(eat.getId(), eat.getFood().getName(),eat.getTime(), eat.getIntake())).collect(Collectors.toList());
     }
-
-//    public List<DtoEat> viewEat(List<Eat> eats) {
-//        return eats.stream().map(eat -> DtoEat.of(eat.getFood().getId(), eat.getFood().getName(), eat.getTime(), eat.getIntake())).collect(Collectors.toList());
-//    }
 
     @Override
     @Transactional
@@ -44,12 +40,8 @@ public class EatServiceImpl implements EatService {
         DietRecord dietRecord = dietRecordRepository.findDietRecordByDate(memberId, localDate);
         Food food = foodRepository.findById(foodId).orElseThrow(() -> new RuntimeException("존재하지 않은 음식입니다."));
         Eat eat = eatRepository.save(requestEat.ToEntity(dietRecord, food, requestEat.getTime(), requestEat.getIntake()));
-        return ResponseEat.of(food);
+        return ResponseEat.of(eat.getId());
     }
-
-//    public void createEat(DietRecord dietRecord, Eat eat, String time, Long intake) {
-//        eatRepository.save(Eat.newEat(dietRecord, eat.getFood(), time, intake));
-//    }
 
     @Override
     @Transactional
@@ -60,8 +52,17 @@ public class EatServiceImpl implements EatService {
     }
 
     @Override
-    @Transactional
-    public void selectEat() {
+    @Transactional(readOnly = true)
+    public List<DtoEat> selectedFood(List<Eat> eats) {
+        return eats.stream().map(
+                eat->DtoEat.of(eat.getFood().getId(), eat.getFood().getName(), eat.getTime(),eat.getIntake())).collect(Collectors.toList());
+    }
 
+    @Override
+    @Transactional(readOnly = true)
+    public List<DtoEat> getEatList(List<Eat> eats) {
+        return eats.stream().map(
+                eat -> DtoEat.of(eat.getFood().getId(), eat.getFood().getName(), eat.getTime(), eat.getIntake())
+        ).collect(Collectors.toList());
     }
 }
