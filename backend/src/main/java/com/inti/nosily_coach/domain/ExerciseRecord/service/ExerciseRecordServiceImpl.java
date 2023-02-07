@@ -1,6 +1,6 @@
 package com.inti.nosily_coach.domain.ExerciseRecord.service;
 
-import com.inti.nosily_coach.auth.repository.MemberRepository;
+import com.inti.nosily_coach.auth.repository.OAuthRepository;
 import com.inti.nosily_coach.domain.ExerciseRecord.model.ExerciseRecord;
 import com.inti.nosily_coach.domain.ExerciseRecord.model.dto.CreateExerciseRecordRequest;
 import com.inti.nosily_coach.domain.ExerciseRecord.model.dto.CreateExerciseRecordResponse;
@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ExerciseRecordServiceImpl implements ExerciseRecordService {
     private final ExerciseRecordRepository exerciseRecordRepository;
-    private final MemberRepository memberRepository;
+    private final OAuthRepository memberRepository;
     private final SelectedExerciseService selectedExerciseService;
 
     // # 운동기록 작성
